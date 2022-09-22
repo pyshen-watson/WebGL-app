@@ -1,6 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-    import { initGLStore } from '../lib/store/GLStore'
+    import { initGLStore } from '$store/GLStore'
 
     let canvas:HTMLCanvasElement
 

@@ -1,5 +1,5 @@
-import type GL from "../type/GL"
-import Store from "../class/Store"
+import type GL from "$type/GL"
+import Store from "$class/Store"
 
 let GLStore:Store
 export { GLStore as default}
