@@ -1,7 +1,7 @@
 <script lang="ts">
-
+  import Canvas from "./view/Canvas.svelte";
 </script>
 
 <main>
-    WebGL
+    <Canvas/>
 </main>
