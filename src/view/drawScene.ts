@@ -4,8 +4,12 @@ import { type Model, ModelStoreList } from '$store/ModelStore'
 import { type Shader, ShaderStoreList } from '$store/ShaderStore'
 import { type Item, ItemStoreList } from '$store/ItemStore'
 import { type Light, LightStoreList } from '$store/LightStore'
+import type Store from '$class/Store'
 
-
+import translate from './Transforms/translate'
+import rotate from './Transforms/rotate'
+import scale from './Transforms/scale'
+import shear from './Transforms/shear'
 
 let mvMatrix = mat4.create() // perspective matrix
 let pMatrix = mat4.create() // model-view matrix
@@ -22,7 +26,8 @@ function drawScene(){
 
     for(let itemID=0; itemID<3; itemID++){
 
-        let item:Item = ItemStoreList[itemID].getInstance()
+        let itemStore:Store<Item> = ItemStoreList[itemID]
+        let item:Item = itemStore.getInstance()
 
         // This case happens when model name is 'Hide' or the model is still loading
         if(ModelStoreList[item.modelName] === null)
@@ -32,17 +37,23 @@ function drawScene(){
         let model:Model = ModelStoreList[item.modelName].getInstance()
 
         mat4.identity(mvMatrix)
+        mvMatrix = translate(mvMatrix, item)
+        mvMatrix = rotate(mvMatrix, itemStore)
+        mvMatrix = scale(mvMatrix, item)
+        mvMatrix = shear(mvMatrix, item)
+
 
         gl.useProgram(shader.program)
         gl.uniformMatrix4fv(shader.pMatrix, false, pMatrix)
         gl.uniformMatrix4fv(shader.mvMatrix, false, mvMatrix)
 
         gl.bindBuffer(gl.ARRAY_BUFFER, model.vertexPositionsBuffer)
-        gl.bindBuffer(gl.ARRAY_BUFFER, model.vertexColorsBuffer)
-        gl.bindBuffer(gl.ARRAY_BUFFER, model.vertexNormalsBuffer)
-
         gl.vertexAttribPointer(shader.vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0)
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, model.vertexColorsBuffer)
         gl.vertexAttribPointer(shader.vertexColorAttribute, 3, gl.FLOAT, false, 0, 0)
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, model.vertexNormalsBuffer)
         gl.vertexAttribPointer(shader.vertexNormalAttribute, 3, gl.FLOAT, false, 0, 0)
 
         for(let lightID=0; lightID<3; lightID++){

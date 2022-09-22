@@ -62,7 +62,7 @@ export function initShaderStoreList(){
         gl.useProgram(program)
 
         // Set up vertex attribute
-        let shader:Shader = { program }
+        let shader:Shader = { program , lightColor:[], lightPosition:[]}
         shader.vertexPositionAttribute = gl.getAttribLocation(program, "aVertexPosition")
         shader.vertexColorAttribute = gl.getAttribLocation(program, "aVertexColor")
         shader.vertexNormalAttribute = gl.getAttribLocation(program, "aVertexNormal")
@@ -71,14 +71,10 @@ export function initShaderStoreList(){
         gl.enableVertexAttribArray(shader.vertexNormalAttribute)
 
         // Set up light attribute
-        shader.lightColor = []
-        shader.lightColor[0] = gl.getUniformLocation(program, "lightColor1")
-        shader.lightColor[1] = gl.getUniformLocation(program, "lightColor2")
-        shader.lightColor[2] = gl.getUniformLocation(program, "lightColor3")
-        shader.lightPosition = []
-        shader.lightPosition[0] = gl.getUniformLocation(program, "lightPosition1")
-        shader.lightPosition[1] = gl.getUniformLocation(program, "lightPosition2")
-        shader.lightPosition[2] = gl.getUniformLocation(program, "lightPosition3")
+        for(let i=0; i<3; i++){
+            shader.lightColor[i] = gl.getUniformLocation(program, `lightColor${i+1}`)
+            shader.lightPosition[i] = gl.getUniformLocation(program, `lightPosition${i+1}`)
+        }
 
         // Set up material attribute
         shader.Ka = gl.getUniformLocation(program, "Ka")
@@ -92,4 +88,5 @@ export function initShaderStoreList(){
 
         ShaderStoreList[shaderName] = new Store(shader)
     }
+
 }
