@@ -10,6 +10,7 @@ export default defineConfig({
       $type: path.resolve('./src/lib/type'),
       $class: path.resolve('./src/lib/class'),
       $store: path.resolve('./src/lib/store'),
+      $shader: path.resolve('./src/asset/shader'),
     }
   }
 })

@@ -19,6 +19,7 @@
       "$type/*": ["src/lib/type/*"],
       "$class/*": ["src/lib/class/*"],
       "$store/*": ["src/lib/store/*"],
+      "$shader/*": ["src/asset/shader/*"],
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],

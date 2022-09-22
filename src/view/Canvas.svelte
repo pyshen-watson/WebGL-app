@@ -2,6 +2,7 @@
     import { onMount } from 'svelte'
     import { initGLStore } from '$store/GLStore'
     import { initModelStoreList } from '$store/ModelStore'
+    import { initShaderStoreList } from '$store/ShaderStore'
 
     let canvas:HTMLCanvasElement
 
@@ -15,6 +16,7 @@
 
         initGLStore({canvas, width, height})
         initModelStoreList()
+        initShaderStoreList()
     })
 </script>
 
