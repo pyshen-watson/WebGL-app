@@ -3,6 +3,7 @@
     import { initGLStore } from '$store/GLStore'
     import { initModelStoreList } from '$store/ModelStore'
     import { initShaderStoreList } from '$store/ShaderStore'
+    import nextFrame from './nextFrame'
 
     let canvas:HTMLCanvasElement
 
@@ -17,6 +18,8 @@
         initGLStore({canvas, width, height})
         initModelStoreList()
         initShaderStoreList()
+
+        nextFrame()
     })
 </script>
 
