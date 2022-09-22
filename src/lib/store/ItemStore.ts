@@ -1,4 +1,5 @@
 import Store from '$class/Store'
+import type { Vec3 } from '$class/Type'
 import { getNow } from '$utils/TimeTools'
 import deepcopy from '$utils/Deepcopy'
 
@@ -7,20 +8,20 @@ export type Item = {
     shaderName: string
     modelName: string
 
-    location: number[]
+    location: Vec3
 
-    rotation_degree: number[]
-    rotation_direction: number[]
+    rotation_degree: Vec3
+    rotation_direction: Vec3
     rotation_auto: boolean
     rotation_speed: number
     rotation_lastAngle: number
     rotation_lastTime: number
 
-    scaling_origin: number[]
-    scaling_ratio: number[]
+    scaling_origin: Vec3
+    scaling_ratio: Vec3
 
-    shearing_direction: number[]
-    shearing_degree: number[]
+    shearing_direction: Vec3
+    shearing_degree: Vec3
 
     material_Ka: number
     material_Kd: number
@@ -29,6 +30,7 @@ export type Item = {
 }
 
 let defaultItem: Item = {
+
     shaderName: "Flat",
     modelName: "Teapot",
     location: [0, 0, 0],
@@ -46,15 +48,16 @@ let defaultItem: Item = {
     material_Kd: 0.1,
     material_Ks: 0.1,
     material_Shininess: 1
+
 }
 
-let defaultShaderName = [
+let defaultShaderName: string[] = [
     "Flat",
     "Gouraud",
     "Phong"
 ]
 
-let defaultLocation = [
+let defaultLocation:Vec3[] = [
     [-40, 0, -80],
     [0, 0, -80],
     [40, 0, -80],

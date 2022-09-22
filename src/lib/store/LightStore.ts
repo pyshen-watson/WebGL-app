@@ -1,11 +1,12 @@
 import Store from '$class/Store'
+import type { Vec3 } from '$class/Type'
 
 export type Light = {
-    location: number[]
-    color: number[]
+    location: Vec3
+    color: Vec3
 }
 
-let defaultLocation = [
+let defaultLocation:Vec3[] = [
     [-100, 0, 0],
     [0, 0, 0],
     [100, 0, 0],

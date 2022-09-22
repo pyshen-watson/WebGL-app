@@ -1,11 +1,12 @@
 import Store from "$class/Store"
+import type { Vec3 } from '$class/Type'
 import { GLStore } from "./GLStore"
 
 export type Model = {
 
-    scale: number[]
-    rotationDirection: number[]
-    rotationDegree: number
+    scale: Vec3
+    rotationDirection: Vec3
+    rotationDegree: Vec3
     rotationAuto: boolean
     height: number
 
