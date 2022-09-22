@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte'
     import { initGLStore } from '$store/GLStore'
+    import { initModelStoreList } from '$store/ModelStore'
 
     let canvas:HTMLCanvasElement
 
@@ -13,7 +14,7 @@
         canvas.height = height
 
         initGLStore({canvas, width, height})
-
+        initModelStoreList()
     })
 </script>
 
