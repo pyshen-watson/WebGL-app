@@ -10,7 +10,7 @@
     onMount(() => {
 
         let width:number = window.innerWidth
-        let height:number = window.innerHeight /2
+        let height:number = window.innerHeight
 
         canvas.width = width
         canvas.height = height

@@ -16,7 +16,7 @@ export type Model = {
     vertexPositionsBuffer?: WebGLBuffer
     vertexNormalsBuffer?: WebGLBuffer
     vertexColorsBuffer?: WebGLBuffer
-    vertexNumber?:number
+    fragNumber?:number
 }
 
 export let ModelStoreList = {
@@ -53,7 +53,7 @@ export async function initModelStoreList(){
         model.vertexPositionsBuffer = dataToBuffer(model.vertexPositions)
         model.vertexNormalsBuffer = dataToBuffer(model.vertexNormals)
         model.vertexColorsBuffer = dataToBuffer(model.vertexColors)
-        model.vertexNumber = model.vertexPositions.length / 3
+        model.fragNumber = model.vertexPositions.length / 3
 
         let store = new Store(model)
         ModelStoreList[modelName] =  store

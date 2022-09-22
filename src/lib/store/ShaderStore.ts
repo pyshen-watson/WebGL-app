@@ -13,13 +13,8 @@ export type Shader = {
     vertexColorAttribute?: number
     vertexNormalAttribute?: number
 
-    lightColor1?: WebGLUniformLocation
-    lightColor2?: WebGLUniformLocation
-    lightColor3?: WebGLUniformLocation
-
-    lightPosition1?: WebGLUniformLocation
-    lightPosition2?: WebGLUniformLocation
-    lightPosition3?: WebGLUniformLocation
+    lightColor?: WebGLUniformLocation[]
+    lightPosition?: WebGLUniformLocation[]
 
     Ka?: WebGLUniformLocation
     Kd?: WebGLUniformLocation
@@ -76,12 +71,14 @@ export function initShaderStoreList(){
         gl.enableVertexAttribArray(shader.vertexNormalAttribute)
 
         // Set up light attribute
-        shader.lightColor1 = gl.getUniformLocation(program, "lightColor1")
-        shader.lightColor2 = gl.getUniformLocation(program, "lightColor2")
-        shader.lightColor3 = gl.getUniformLocation(program, "lightColor3")
-        shader.lightPosition1 = gl.getUniformLocation(program, "lightPosition1")
-        shader.lightPosition2 = gl.getUniformLocation(program, "lightPosition2")
-        shader.lightPosition3 = gl.getUniformLocation(program, "lightPosition3")
+        shader.lightColor = []
+        shader.lightColor[0] = gl.getUniformLocation(program, "lightColor1")
+        shader.lightColor[1] = gl.getUniformLocation(program, "lightColor2")
+        shader.lightColor[2] = gl.getUniformLocation(program, "lightColor3")
+        shader.lightPosition = []
+        shader.lightPosition[0] = gl.getUniformLocation(program, "lightPosition1")
+        shader.lightPosition[1] = gl.getUniformLocation(program, "lightPosition2")
+        shader.lightPosition[2] = gl.getUniformLocation(program, "lightPosition3")
 
         // Set up material attribute
         shader.Ka = gl.getUniformLocation(program, "Ka")
