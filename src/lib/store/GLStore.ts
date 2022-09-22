@@ -1,8 +1,13 @@
-import type GL from "$type/GL"
 import Store from "$class/Store"
 
-let GLStore:Store<GL>
-export { GLStore as default}
+export type GL = {
+    canvas:HTMLCanvasElement
+    width:number
+    height:number
+    gl?: WebGLRenderingContext
+}
+
+export let GLStore:Store<GL>
 
 export function initGLStore(options:GL){
 

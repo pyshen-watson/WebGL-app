@@ -1,8 +1,25 @@
-import type Model from "$type/Model"
 import Store from "$class/Store"
-import GLStore from "./GLStore"
+import { GLStore } from "./GLStore"
 
-let ModelStoreList = {
+export type Model = {
+
+    scale: number[]
+    rotationDirection: number[]
+    rotationDegree: number
+    rotationAuto: boolean
+    height: number
+
+    vertexPositions: number[]
+    vertexNormals: number[]
+    vertexColors: number[]
+
+    vertexPositionsBuffer?: WebGLBuffer
+    vertexNormalsBuffer?: WebGLBuffer
+    vertexColorsBuffer?: WebGLBuffer
+    vertexNumber?:number
+}
+
+export let ModelStoreList = {
     'Teapot':null,
     'Kangaroo':null,
     'Moai':null,
@@ -10,7 +27,6 @@ let ModelStoreList = {
     'Church':null,
     'Car':null
 }
-export { ModelStoreList as default}
 
 
 export async function initModelStoreList(){

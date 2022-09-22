@@ -1,5 +1,9 @@
-import type Light from '$type/Light'
 import Store from '$class/Store'
+
+export type Light = {
+    location: number[]
+    color: number[]
+}
 
 let defaultLocation = [
     [-100, 0, 0],
@@ -7,7 +11,7 @@ let defaultLocation = [
     [100, 0, 0],
 ]
 
-let LightStoreList: Store<Light>[] = []
+export let LightStoreList: Store<Light>[] = []
 
 for(let i=0; i<3; i++){
 
@@ -19,5 +23,3 @@ for(let i=0; i<3; i++){
     let store = new Store(light)
     LightStoreList.push(store)
 }
-
-export default LightStoreList

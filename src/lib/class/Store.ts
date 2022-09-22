@@ -20,6 +20,10 @@ class Store<T>{
         })
     }
 
+    getInstance():T{
+        return get(this.store)
+    }
+
 }
 
 export default Store

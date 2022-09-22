@@ -1,7 +1,32 @@
-import type Item from '$type/Item'
 import Store from '$class/Store'
 import { getNow } from '$utils/TimeTools'
 import deepcopy from '$utils/Deepcopy'
+
+export type Item = {
+
+    shaderName: string
+    modelName: string
+
+    location: number[]
+
+    rotation_degree: number[]
+    rotation_direction: number[]
+    rotation_auto: boolean
+    rotation_speed: number
+    rotation_lastAngle: number
+    rotation_lastTime: number
+
+    scaling_origin: number[]
+    scaling_ratio: number[]
+
+    shearing_direction: number[]
+    shearing_degree: number[]
+
+    material_Ka: number
+    material_Kd: number
+    material_Ks: number
+    material_Shininess: number
+}
 
 let defaultItem: Item = {
     shaderName: "Flat",
@@ -35,7 +60,7 @@ let defaultLocation = [
     [40, 0, -80],
 ]
 
-let ItemStoreList: Store<Item>[] = []
+export let ItemStoreList: Store<Item>[] = []
 
 for(let i=0; i<3; i++){
     let item = deepcopy(defaultItem)
@@ -45,5 +70,3 @@ for(let i=0; i<3; i++){
     let store = new Store(item)
     ItemStoreList.push(store)
 }
-
-export default ItemStoreList

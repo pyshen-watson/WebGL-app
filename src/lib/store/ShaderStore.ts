@@ -1,20 +1,41 @@
-import type Shader from "$type/Shader"
 import Store from "$class/Store"
-import GLStore from "./GLStore"
-
+import { GLStore } from "./GLStore"
 import { flatVertex, flatFragment } from '$shader/Flat'
 import { gouraudVertex, gouraudFragment } from '$shader/Gouraud'
 import { phongVertex, phongFragment } from '$shader/Phong'
 import { celVertex, celFragment } from '$shader/Cel'
 
+export type Shader = {
 
-let ShaderStoreList = {
+    program: WebGLProgram
+
+    vertexPositionAttribute?: number
+    vertexColorAttribute?: number
+    vertexNormalAttribute?: number
+
+    lightColor1?: WebGLUniformLocation
+    lightColor2?: WebGLUniformLocation
+    lightColor3?: WebGLUniformLocation
+
+    lightPosition1?: WebGLUniformLocation
+    lightPosition2?: WebGLUniformLocation
+    lightPosition3?: WebGLUniformLocation
+
+    Ka?: WebGLUniformLocation
+    Kd?: WebGLUniformLocation
+    Ks?: WebGLUniformLocation
+    Shininess?: WebGLUniformLocation
+
+    pMatrix?: WebGLUniformLocation
+    mvMatrix?: WebGLUniformLocation
+}
+
+export let ShaderStoreList = {
     'Flat':null,
     'Gouraud':null,
     'Phong':null,
     'Cel':null,
 }
-export { ShaderStoreList as default}
 
 export function initShaderStoreList(){
 
