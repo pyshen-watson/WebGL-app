@@ -1,7 +1,7 @@
 import type GL from "$type/GL"
 import Store from "$class/Store"
 
-let GLStore:Store
+let GLStore:Store<GL>
 export { GLStore as default}
 
 export function initGLStore(options:GL){

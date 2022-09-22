@@ -1,11 +1,11 @@
 import { get, writable } from 'svelte/store'
 import type { Writable } from 'svelte/store'
 
-class Store{
+class Store<T>{
 
-    store:Writable<Object>
+    private store:Writable<T>
 
-    constructor(initValue:Object){
+    constructor(initValue:T){
         this.store = writable(initValue)
     }
 
