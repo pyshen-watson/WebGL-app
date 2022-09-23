@@ -3,14 +3,16 @@
     import type { Light } from "$store/LightStore"
 
     import LocationBlock from './LocationBlock.svelte'
-    import RGBBlock from './RGBBlock.svelte'
+    import RgbBlock from './RGBBlock.svelte'
+    import SelectionBlock from "./SelectionBlock.svelte"
 
     export let lightStore: Store<Light>
 </script>
 
 <div>
     <LocationBlock {lightStore}/>
-    <RGBBlock {lightStore}/>
+    <RgbBlock {lightStore}/>
+    <SelectionBlock {lightStore}/>
 </div>
 
 <style lang="scss">
