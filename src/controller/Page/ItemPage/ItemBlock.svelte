@@ -1,13 +1,19 @@
 <script lang="ts">
-    import type Store from "$class/Store";
+    import type Store from "$class/Store"
     import type { Item } from "$store/ItemStore"
+    import Flex from "$components/Flex.svelte";
+
     import ModelBlock from "./ModelBlock.svelte"
+    import ShaderBlock from "./ShaderBlock.svelte"
+
     export let itemStore: Store<Item>
 </script>
 
 <div>
-    <h1>This is Item</h1>
-    <ModelBlock {itemStore}/>
+    <Flex --gap="0.5rem">
+        <ModelBlock {itemStore}/>
+        <ShaderBlock {itemStore}/>
+    </Flex>
 </div>
 
 <style lang="scss">

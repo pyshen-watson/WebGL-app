@@ -4,9 +4,9 @@
     export let options:string[]
 </script>
 
-<main>
+<div>
     <span class="label">
-        <div> {title} </div>
+        <span> {title} </span>
     </span>
     <span class="value">
         <select bind:value={value}>
@@ -15,11 +15,11 @@
             {/each}
         </select>
     </span>
-</main>
+</div>
 
 <style lang="scss">
 
-    main{
+    div{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -30,14 +30,15 @@
         }
 
         .label{
-            background-color: gray;
+            background-color: rgba(gray, 0.7);
             border-radius: 1rem 0 0 1rem;
             font-size: 1.1rem;
+            font-weight: 700;
         }
 
         .value{
             display: flex;
-            background-color: lightgray;
+            background-color: rgba(lightgray, 0.7);
             border-radius: 0 1rem 1rem 0;
 
             select{

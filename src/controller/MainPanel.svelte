@@ -7,7 +7,7 @@
     import InfoPage from './Page/InfoPage/InfoPage.svelte'
     import AboutPage from './Page/AboutPage/AboutPage.svelte'
 
-    let menuOpen:boolean = false
+    let menuOpen:boolean = true
 
     let selectID:number = 0
 
