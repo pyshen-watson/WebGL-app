@@ -1,10 +1,11 @@
 <script lang="ts">
     import type Store from "$class/Store"
     import type { Item } from "$store/ItemStore"
-    import Flex from "$components/Flex.svelte";
+    import Flex from "$components/Flex.svelte"
 
     import ModelBlock from "./ModelBlock.svelte"
     import ShaderBlock from "./ShaderBlock.svelte"
+    import TranslateBlock from "./TranslateBlock.svelte"
 
     export let itemStore: Store<Item>
 </script>
@@ -14,6 +15,7 @@
         <ModelBlock {itemStore}/>
         <ShaderBlock {itemStore}/>
     </Flex>
+    <TranslateBlock {itemStore}/>
 </div>
 
 <style lang="scss">
