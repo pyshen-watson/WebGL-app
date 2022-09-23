@@ -1,22 +1,27 @@
 <script lang="ts">
-    import type { ItemStore } from "$utils/Type";
-    import { dirMap } from "$utils/Math"
-
     import Flex from "$components/Flex.svelte"
     import Bar from "$components/Bar.svelte"
     import Label from "$components/Label.svelte"
 
+    import type { ItemStore } from "$utils/Type";
     export let store: ItemStore
-
     let direction: number = $store.rotation_direction.indexOf(1)
-    let eventName: string = "RotDirChange"
 
+
+    import { dirMap } from "$utils/Math"
     const directionChangeHandler = (e:CustomEvent) => {
         direction = dirMap[e.detail]
     }
 
     const autoChangeHandler = (e:CustomEvent) => {
         $store.rotation_auto = !$store.rotation_auto
+    }
+
+    import { ModelRepoList } from '$repo/ModelRepo'
+    import deepcopy from "$utils/Deepcopy"
+    const degreeResetHandler = (e:CustomEvent) => {
+        $store.rotation_degree = deepcopy(ModelRepoList[$store.modelName].get('rotationDegree'))
+        $store.rotation_auto = false
     }
 
     $:{
@@ -31,6 +36,8 @@
         title="Rotation"
         bind:value={$store.rotation_degree[direction]}
         range={[-360,360,1]}
+        eventName="RotDegReset"
+        on:RotDegReset={degreeResetHandler}
     />
 
     <Flex --align="center" --gap="1rem">
@@ -40,7 +47,7 @@
                 title={dir}
                 bind:value={$store.rotation_degree[i]}
                 active={$store.rotation_direction.indexOf(1)===i}
-                eventName={eventName}
+                eventName="RotDirChange"
                 on:RotDirChange={directionChangeHandler}
             />
         {/each}

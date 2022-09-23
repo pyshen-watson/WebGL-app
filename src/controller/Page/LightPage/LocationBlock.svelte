@@ -14,6 +14,9 @@
         direction = dirMap[e.detail]
     }
 
+    const locResetHandler = () => {
+        $store.location = [0,0,0]
+    }
 </script>
 
 <div>
@@ -22,6 +25,8 @@
         title="Location"
         bind:value={$store.location[direction]}
         range={[-150, 150, 1]}
+        eventName="LocReset"
+        on:LocReset={locResetHandler}
     />
 
     <Flex --align="center" --gap="1rem">

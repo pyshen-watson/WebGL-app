@@ -1,20 +1,28 @@
 <script lang="ts">
     import type { Vec3 } from "$utils/Type"
+    import { createEventDispatcher } from 'svelte'
 
     export let title: string
     export let value: number
     export let range: Vec3
     export let displayValue:boolean=false
+    export let eventName:string = ""
 
     let min:number = range[0]
     let max:number = range[1]
     let step:number = range[2]
+
+    const dispatcher = createEventDispatcher()
+    const clickHandler = () => {
+        dispatcher(eventName, title)
+    }
+
 </script>
 
-<main>
+<div class="bar">
 
     <span class="title">
-        {title}
+        {title}<i class="fa fa-refresh" aria-hidden="true" on:click={clickHandler}></i>
     </span>
 
     {#if displayValue}
@@ -35,17 +43,15 @@
         </span>
     {/if}
 
-
-</main>
+</div>
 
 <style lang="scss">
 
-    main{
+    .bar{
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 0.5rem 0rem;
-        height: 1.5rem;
 
         span{
             padding: 0.3rem 0.7rem;
@@ -56,6 +62,7 @@
             border-radius: 1rem 0 0 1rem;
             text-align: center;
             font-weight: 600;
+            display: flex;
         }
 
         .bar{
@@ -79,11 +86,23 @@
                 border: 0px;
                 outline: none;
                 margin: 0.15rem 0rem;
+                color: rgba(black, 0.8);
+                font-weight: 700;
             }
         }
 
         .end{
             border-radius: 0 1rem 1rem 0;
+        }
+
+        i{
+            margin-left: 0.5rem;
+            cursor: pointer;
+
+            &:hover{
+                color: white;
+                font-weight: 800;
+            }
         }
 
     }

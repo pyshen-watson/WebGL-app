@@ -1,20 +1,21 @@
 <script lang="ts">
-    import type { ItemStore } from "$utils/Type"
-    import { dirMap } from "$utils/Math"
-
     import Flex from "$components/Flex.svelte"
     import Bar from "$components/Bar.svelte"
     import Label from "$components/Label.svelte"
 
+    import type { ItemStore } from "$utils/Type"
     export let store:ItemStore
+    let direction: number = 0
 
-    let direction: number = $store.shearing_direction.indexOf(1)
-    let eventName:string = "ShearDirChange"
 
+    import { dirMap } from "$utils/Math"
     const dirChangeHandler = (e:CustomEvent) => {
         direction = dirMap[e.detail]
     }
 
+    const degreeResetHandler = (e:CustomEvent) => {
+        $store.shearing_degree = [0,0,0]
+    }
 </script>
 
 <div>
@@ -23,6 +24,8 @@
         title="Shear"
         bind:value={$store.shearing_degree[direction]}
         range={[-90, 90, 1]}
+        eventName="ShearDegReset"
+        on:ShearDegReset={degreeResetHandler}
     />
 
     <Flex --align="center" --gap="1rem">
@@ -31,7 +34,7 @@
                 title={dir}
                 bind:value={$store.shearing_degree[i]}
                 active={direction===i}
-                eventName={eventName}
+                eventName="ShearDirChange"
                 on:ShearDirChange={dirChangeHandler}
             />
         {/each}
