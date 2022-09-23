@@ -7,6 +7,7 @@
 
 <style>
     div{
+        box-sizing: border-box;
         width: 100%;
         display: flex;
         justify-content: var(--align, 'space-between');

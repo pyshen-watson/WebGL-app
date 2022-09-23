@@ -14,7 +14,6 @@
         height: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        padding-top: 1rem;
-
+        padding: 1rem;
     }
 </style>

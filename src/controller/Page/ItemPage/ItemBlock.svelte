@@ -6,6 +6,7 @@
     import ModelBlock from "./ModelBlock.svelte"
     import ShaderBlock from "./ShaderBlock.svelte"
     import TranslateBlock from "./TranslateBlock.svelte"
+    import RotateBlock from "./RotateBlock.svelte"
 
     export let itemStore: Store<Item>
 </script>
@@ -16,6 +17,7 @@
         <ShaderBlock {itemStore}/>
     </Flex>
     <TranslateBlock {itemStore}/>
+    <RotateBlock {itemStore}/>
 </div>
 
 <style lang="scss">

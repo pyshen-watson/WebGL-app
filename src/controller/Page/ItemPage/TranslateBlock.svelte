@@ -34,7 +34,7 @@
                 title={dir}
                 bind:value={$store.location[i]}
                 active={direction===i}
-                {eventName}
+                eventName={eventName}
                 on:TranDirChange={dirChangeHandler}
             />
         {/each}

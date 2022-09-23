@@ -34,20 +34,20 @@
         border: 0px;
 
         .label{
-            background-color: rgba(gray, 0.7);
-            padding: 0.5rem 0.7rem;
+            background-color: rgba(gray, 0.5);
+            padding: 0.5rem 0.5rem;
             border-radius: 1rem 0 0 1rem;
             cursor: pointer;
 
             &:hover{
                 font-weight: 700;
                 color: white;
-                background-color: rgba(blue, 0.7);
+                background-color: rgba(blue, 0.5);
             }
         }
 
         .value{
-            background-color: rgba(lightgray, 0.7);
+            background-color: rgba(lightgray, 0.5);
             padding: 0.5rem;
             border-radius: 0 1rem 1rem 0;
 
@@ -64,11 +64,11 @@
 
     .active{
         .label{
-            background-color:rgba(blue, 0.7);
-            color: rgba(white, 0.7);
+            background-color:rgba(blue, 0.5);
+            color: rgba(white, 0.5);
         }
         .value{
-            background-color: rgba(lightblue, 0.7);
+            background-color: rgba(lightblue, 0.5);
 
         }
     }
