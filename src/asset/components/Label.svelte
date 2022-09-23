@@ -35,7 +35,7 @@
 
         .label{
             background-color: rgba(gray, 0.5);
-            padding: 0.5rem 0.3rem;
+            padding: 0.5rem 0.7rem;
             cursor: pointer;
 
             &:hover{

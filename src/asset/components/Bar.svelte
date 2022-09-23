@@ -55,7 +55,7 @@
             background-color: var(--color, rgba(gray, 0.7));
             border-radius: 1rem 0 0 1rem;
             text-align: center;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .bar{
