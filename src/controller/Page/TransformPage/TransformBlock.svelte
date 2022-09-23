@@ -26,7 +26,7 @@
         border-right: 2px solid rgba(gray, 0.3);
 
         display: grid;
-        row-gap: 2rem;
+        row-gap: 1rem;
     }
 
 </style>

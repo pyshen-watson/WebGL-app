@@ -33,7 +33,7 @@
         .label{
             background-color: rgba(gray, 0.7);
             border-radius: 1rem 0 0 1rem;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
         }
 

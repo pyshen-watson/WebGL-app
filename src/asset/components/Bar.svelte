@@ -45,6 +45,7 @@
         justify-content: center;
         align-items: center;
         margin: 0.5rem 0rem;
+        height: 1.5rem;
 
         span{
             padding: 0.3rem 0.7rem;

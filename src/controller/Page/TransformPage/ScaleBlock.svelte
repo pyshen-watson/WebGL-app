@@ -28,7 +28,7 @@
         range={[0, 5, 0.1]}
     />
 
-    <Flex --align="end" --gap="0.5em">
+    <Flex --align="center" --gap="1rem">
         {#each Object.keys(dirMap) as dir, i}
             <Label
                 title={dir}
