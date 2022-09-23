@@ -58,9 +58,9 @@ let defaultShaderName: string[] = [
 ]
 
 let defaultLocation:Vec3[] = [
-    [-40, 0, -80],
+    [-55, 0, -80],
     [0, 0, -80],
-    [40, 0, -80],
+    [55, 0, -80],
 ]
 
 export let ItemStoreList: Store<Item>[] = []

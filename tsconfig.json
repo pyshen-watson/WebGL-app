@@ -20,6 +20,7 @@
       "$store/*": ["src/lib/store/*"],
       "$utils/*": ["src/lib/utils/*"],
       "$shader/*": ["src/asset/shader/*"],
+      "$components/*": ["src/asset/components/*"],
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],

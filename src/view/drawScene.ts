@@ -30,8 +30,9 @@ function drawScene(){
         let item:Item = itemStore.getInstance()
 
         // This case happens when model name is 'Hide' or the model is still loading
-        if(ModelStoreList[item.modelName] === null)
+        if(!ModelStoreList[item.modelName])
             continue
+
 
         let shader:Shader = ShaderStoreList[item.shaderName].getInstance()
         let model:Model = ModelStoreList[item.modelName].getInstance()

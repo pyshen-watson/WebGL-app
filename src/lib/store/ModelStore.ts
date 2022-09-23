@@ -60,3 +60,24 @@ export async function initModelStoreList(){
         ModelStoreList[modelName] =  store
     }
 }
+
+
+import type { Item } from "./ItemStore"
+export function changeModel(store:Store<Item>, modelName:string){
+
+    store.set('modelName', modelName)
+    
+    let modelStore:Store<Model> = ModelStoreList[modelName]
+    if(!modelStore)
+        return
+
+    let data = modelStore.getInstance()
+    store.set('scaling_origin', data.scale)
+    store.set('rotation_direction', data.rotationDirection)
+    store.set('rotation_degree', data.rotationDegree)
+    store.set('rotation_auto', data.rotationAuto)
+
+    let location:Vec3 = store.get('location')
+    location[1] = data.height
+    store.set('location', location)
+}

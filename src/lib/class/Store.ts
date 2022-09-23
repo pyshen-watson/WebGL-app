@@ -3,7 +3,7 @@ import type { Writable } from 'svelte/store'
 
 class Store<T>{
 
-    private store:Writable<T>
+    store:Writable<T>
 
     constructor(initValue:T){
         this.store = writable(initValue)

@@ -11,6 +11,7 @@ export default defineConfig({
       $store: path.resolve('./src/lib/store'),
       $utils: path.resolve('./src/lib/utils'),
       $shader: path.resolve('./src/asset/shader'),
+      $components: path.resolve('./src/asset/components'),
     }
   }
 })
