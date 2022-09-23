@@ -1,18 +1,27 @@
-<svelte:head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</svelte:head>
-
 <script lang="ts">
+    import Navbar from './Navbar/Navbar.svelte'
+    import ItemPage from './Page/ItemPage/ItemPage.svelte'
+    import LightPage from './Page/LightPage/LightPage.svelte'
+    import MotionPage from './Page/MotionPage/MotionPage.svelte'
+    import ScenePage from './Page/ScenePage/ScenePage.svelte'
+    import InfoPage from './Page/InfoPage/InfoPage.svelte'
+    import AboutPage from './Page/AboutPage/AboutPage.svelte'
+
     let menuOpen:boolean = false
 
-    const toggleMenu = () => {
-        menuOpen = !menuOpen
+    let selectID:number = 0
+
+    const tabClickHandler = (e:CustomEvent) => {
+        selectID = e.detail
+        console.log(selectID);
+
     }
+
 </script>
 
 <div class="main" class:opened={menuOpen} >
 
-    <button on:click={toggleMenu} >
+    <button on:click={() => { menuOpen = !menuOpen }} >
         {#if menuOpen}
             <i class="fa fa-close"/>
         {:else}
@@ -21,9 +30,27 @@
     </button>
 
     <div class="panel">
+        <Navbar {selectID} on:tabClick={tabClickHandler}/>
+        {#if selectID === 0}
+            <ItemPage/>
+        {:else if selectID === 1}
+            <LightPage/>
+        {:else if selectID === 2}
+            <MotionPage/>
+        {:else if selectID === 3}
+            <ScenePage/>
+        {:else if selectID === 4}
+            <InfoPage/>
+        {:else if selectID === 5}
+            <AboutPage/>
+        {/if}
     </div>
 
 </div>
+
+<svelte:head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</svelte:head>
 
 <style lang="scss">
     .main{
@@ -37,7 +64,8 @@
             color: white;
             background-color: lightgray;
             border: none;
-            padding: 1rem 1.2rem;
+            width: 100%;
+            padding: 0.7rem 0rem;
             font-size: 1.5rem;
             cursor: pointer;
         }
