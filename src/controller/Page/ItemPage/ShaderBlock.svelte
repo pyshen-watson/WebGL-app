@@ -8,9 +8,6 @@
     export let itemStore:Store<Item>
 
     let store: Writable<Item> = itemStore.store
-    let options = Object.keys(ShaderStoreList)
-
-
 </script>
 
 <div>

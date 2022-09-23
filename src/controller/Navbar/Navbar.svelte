@@ -6,7 +6,7 @@
 
     export let selectID:number
 
-    let titleList = [ "Item", "Light", "Motion", "Scene", "Info", "About" ]
+    let titleList = [ "Item", "Transform", "Light", "Motion", "Scene", "Info", "About" ]
 
 </script>
 

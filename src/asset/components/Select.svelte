@@ -25,6 +25,7 @@
         align-items: center;
         width: 100%;
 
+
         span{
             padding: 0.3rem 0.7rem;
         }
@@ -32,7 +33,7 @@
         .label{
             background-color: rgba(gray, 0.7);
             border-radius: 1rem 0 0 1rem;
-            font-size: 1rem;
+            font-size: 1.5rem;
             font-weight: 700;
         }
 
@@ -42,7 +43,7 @@
             border-radius: 0 1rem 1rem 0;
 
             select{
-                font-size: 1rem;
+                font-size: 1.5rem;
                 background: none;
                 border: 0px;
                 outline: 0px;

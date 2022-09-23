@@ -54,6 +54,7 @@
             eventName="autoChange"
             active={$store.rotation_auto}
             on:autoChange={autoChangeHandler}
+            step={30}
         />
 
     </Flex>

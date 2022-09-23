@@ -36,7 +36,6 @@
         .label{
             background-color: rgba(gray, 0.5);
             padding: 0.5rem 0.3rem;
-            border-radius: 1rem 0 0 1rem;
             cursor: pointer;
 
             &:hover{
@@ -49,7 +48,6 @@
         .value{
             background-color: rgba(lightgray, 0.5);
             padding: 0.5rem 0.3rem;
-            border-radius: 0 1rem 1rem 0;
 
 
             input{

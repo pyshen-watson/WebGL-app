@@ -1,0 +1,19 @@
+<script lang="ts">
+    import ItemBlock from "./TransformBlock.svelte"
+    import { ItemStoreList } from "$store/ItemStore"
+</script>
+
+<div>
+    {#each ItemStoreList as itemStore}
+        <ItemBlock {itemStore}/>
+    {/each}
+</div>
+
+<style lang="scss">
+    div{
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 1rem;
+    }
+</style>

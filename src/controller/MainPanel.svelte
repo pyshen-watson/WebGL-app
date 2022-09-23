@@ -1,6 +1,7 @@
 <script lang="ts">
     import Navbar from './Navbar/Navbar.svelte'
     import ItemPage from './Page/ItemPage/ItemPage.svelte'
+    import TransformPage from './Page/TransformPage/TransformPage.svelte'
     import LightPage from './Page/LightPage/LightPage.svelte'
     import MotionPage from './Page/MotionPage/MotionPage.svelte'
     import ScenePage from './Page/ScenePage/ScenePage.svelte'
@@ -34,14 +35,16 @@
         {#if selectID === 0}
             <ItemPage/>
         {:else if selectID === 1}
-            <LightPage/>
+            <TransformPage/>
         {:else if selectID === 2}
-            <MotionPage/>
+            <LightPage/>
         {:else if selectID === 3}
-            <ScenePage/>
+            <MotionPage/>
         {:else if selectID === 4}
-            <InfoPage/>
+            <ScenePage/>
         {:else if selectID === 5}
+            <InfoPage/>
+        {:else if selectID === 6}
             <AboutPage/>
         {/if}
     </div>
