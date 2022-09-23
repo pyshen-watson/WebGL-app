@@ -1,18 +1,16 @@
 <script lang="ts">
-    import type Store from "$class/Store"
-    import type { Light } from "$store/LightStore"
-
+    import type { LightStore } from "$utils/Type";
     import LocationBlock from './LocationBlock.svelte'
-    import RgbBlock from './RGBBlock.svelte'
+    import ColorBlock from './ColorBlock.svelte'
     import SelectionBlock from "./SelectionBlock.svelte"
 
-    export let lightStore: Store<Light>
+    export let store: LightStore
 </script>
 
 <div>
-    <LocationBlock {lightStore}/>
-    <RgbBlock {lightStore}/>
-    <SelectionBlock {lightStore}/>
+    <LocationBlock {store}/>
+    <ColorBlock {store}/>
+    <SelectionBlock {store}/>
 </div>
 
 <style lang="scss">

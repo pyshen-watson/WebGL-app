@@ -1,6 +1,6 @@
 import { mat4 } from 'gl-matrix'
 import { degToRad } from '$utils/Math'
-import type { Item } from '$store/ItemStore'
+import type { Item } from '$utils/Type'
 
 function shear(mvMatrix:mat4, item:Item){
 
@@ -12,7 +12,6 @@ function shear(mvMatrix:mat4, item:Item){
     shearMatrix[6] = Math.tan(degToRad(item.shearing_degree[2]))
 
     mat4.multiply(mvMatrix, shearMatrix, mvMatrix)
-
     return mvMatrix
 }
 

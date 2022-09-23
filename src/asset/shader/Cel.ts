@@ -40,10 +40,10 @@ export const celFragment:string = `
     varying vec3 mvVertex;
 
     void main(void) {
-        
+
 
         /* ambient */
-        vec3  Ambient = ceil(Ka * 6.0) / 6.0 * vec3(fragcolor);
+        vec3  Ambient = ceil(Ka * 4.0) / 4.0 * vec3(fragcolor);
 
         /* diffuse */
         vec3 L1 = normalize(vec3(lightPosition1) - mvVertex);
@@ -65,9 +65,9 @@ export const celFragment:string = `
         float S2 = Ks * pow(max(dot(R2,V), 0.0), Shininess);
         float S3 = Ks * pow(max(dot(R3,V), 0.0), Shininess);
 
-        float DS1 =  ceil((D1 + S1) * 6.0) / 6.0;
-        float DS2 =  ceil((D2 + S2) * 6.0) / 6.0;
-        float DS3 =  ceil((D3 + S3) * 6.0) / 6.0;
+        float DS1 =  ceil((D1 + S1) * 4.0) / 4.0;
+        float DS2 =  ceil((D2 + S2) * 4.0) / 4.0;
+        float DS3 =  ceil((D3 + S3) * 4.0) / 4.0;
 
         vec3 diffuseSpecular1 = lightColor1 * DS1 * vec3(fragcolor);
         vec3 diffuseSpecular2 = lightColor2 * DS2 * vec3(fragcolor);

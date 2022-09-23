@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Vec3 } from "$class/Type"
+    import type { Vec3 } from "$utils/Type"
 
     export let title: string
     export let value: number

@@ -1,16 +1,12 @@
 <script lang="ts">
-    import type { Light } from "$store/LightStore"
-    import type { Writable } from "svelte/store"
-    import type Store from "$class/Store"
+    import type { LightStore } from "$utils/Type"
     import { dirMap } from "$utils/Math"
-
     import Flex from "$components/Flex.svelte"
     import Bar from "$components/Bar.svelte"
     import Label from "$components/Label.svelte"
 
-    export let lightStore:Store<Light>
+    export let store: LightStore
 
-    let store: Writable<Light> = lightStore.store
     let direction: number = 0
     let eventName:string = "LocDirChange"
 
@@ -41,7 +37,3 @@
     </Flex>
 
 </div>
-
-<style lang="scss">
-
-</style>

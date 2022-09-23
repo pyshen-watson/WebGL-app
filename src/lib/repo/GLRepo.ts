@@ -1,15 +1,8 @@
-import Store from "$class/Store"
+import type { GL, GLRepo } from '$utils/Type'
+import Repo from '$class/Repository'
 
-export type GL = {
-    canvas:HTMLCanvasElement
-    width:number
-    height:number
-    gl?: WebGLRenderingContext
-}
-
-export let GLStore:Store<GL>
-
-export function initGLStore(options:GL){
+export let glRepo: GLRepo
+export function initGLRepo(options: GL){
 
     const gl:WebGLRenderingContext = options.canvas.getContext("webgl")
 
@@ -24,5 +17,5 @@ export function initGLStore(options:GL){
     gl.getExtension('OES_standard_derivatives')
 
     options.gl = gl
-    GLStore = new Store(options)
+    glRepo = new Repo(options)
 }

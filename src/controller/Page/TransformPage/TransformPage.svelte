@@ -1,11 +1,11 @@
 <script lang="ts">
-    import ItemBlock from "./TransformBlock.svelte"
-    import { ItemStoreList } from "$store/ItemStore"
+    import { ItemRepoList } from '$repo/ItemRepo'
+    import TransformBlock from "./TransformBlock.svelte"
 </script>
 
 <div>
-    {#each ItemStoreList as itemStore}
-        <ItemBlock {itemStore}/>
+    {#each ItemRepoList as itemRepo}
+        <TransformBlock store={itemRepo.getStore()}/>
     {/each}
 </div>
 

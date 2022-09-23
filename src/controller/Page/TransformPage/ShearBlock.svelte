@@ -1,16 +1,13 @@
 <script lang="ts">
-    import type { Item } from "$store/ItemStore"
-    import type { Writable } from "svelte/store"
-    import type Store from "$class/Store"
+    import type { ItemStore } from "$utils/Type"
     import { dirMap } from "$utils/Math"
 
     import Flex from "$components/Flex.svelte"
     import Bar from "$components/Bar.svelte"
     import Label from "$components/Label.svelte"
 
-    export let itemStore:Store<Item>
+    export let store:ItemStore
 
-    let store: Writable<Item> = itemStore.store
     let direction: number = $store.shearing_direction.indexOf(1)
     let eventName:string = "ShearDirChange"
 
@@ -41,7 +38,3 @@
     </Flex>
 
 </div>
-
-<style lang="scss">
-
-</style>

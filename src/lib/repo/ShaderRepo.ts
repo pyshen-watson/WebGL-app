@@ -1,40 +1,22 @@
-import Store from "$class/Store"
-import { GLStore } from "./GLStore"
+import Repo from "$class/Repository"
+import { glRepo } from "./GLRepo"
+import type { Shader } from "$utils/Type"
+
 import { flatVertex, flatFragment } from '$shader/Flat'
 import { gouraudVertex, gouraudFragment } from '$shader/Gouraud'
 import { phongVertex, phongFragment } from '$shader/Phong'
 import { celVertex, celFragment } from '$shader/Cel'
 
-export type Shader = {
-
-    program: WebGLProgram
-
-    vertexPositionAttribute?: number
-    vertexColorAttribute?: number
-    vertexNormalAttribute?: number
-
-    lightColor?: WebGLUniformLocation[]
-    lightPosition?: WebGLUniformLocation[]
-
-    Ka?: WebGLUniformLocation
-    Kd?: WebGLUniformLocation
-    Ks?: WebGLUniformLocation
-    Shininess?: WebGLUniformLocation
-
-    pMatrix?: WebGLUniformLocation
-    mvMatrix?: WebGLUniformLocation
-}
-
-export let ShaderStoreList = {
+export let ShaderRepoList = {
     'Flat':null,
     'Gouraud':null,
     'Phong':null,
     'Cel':null,
 }
 
-export function initShaderStoreList(){
+export function initShaderRepoList(){
 
-    const gl:WebGLRenderingContext = GLStore.get('gl')
+    const gl:WebGLRenderingContext = glRepo.get('gl')
 
     let ShaderSourceList = {
         'Flat': [flatVertex, flatFragment],
@@ -50,7 +32,7 @@ export function initShaderStoreList(){
         return gl.getShaderParameter(shader, gl.COMPILE_STATUS) ? shader : null
     }
 
-    for(let shaderName of Object.keys(ShaderStoreList)){
+    for(let shaderName of Object.keys(ShaderRepoList)){
 
         // Set up program and shader
         let program = gl.createProgram()
@@ -64,10 +46,10 @@ export function initShaderStoreList(){
         // Set up vertex attribute
         let shader:Shader = { program , lightColor:[], lightPosition:[]}
         shader.vertexPositionAttribute = gl.getAttribLocation(program, "aVertexPosition")
-        shader.vertexColorAttribute = gl.getAttribLocation(program, "aVertexColor")
-        shader.vertexNormalAttribute = gl.getAttribLocation(program, "aVertexNormal")
         gl.enableVertexAttribArray(shader.vertexPositionAttribute)
+        shader.vertexColorAttribute = gl.getAttribLocation(program, "aVertexColor")
         gl.enableVertexAttribArray(shader.vertexColorAttribute)
+        shader.vertexNormalAttribute = gl.getAttribLocation(program, "aVertexNormal")
         gl.enableVertexAttribArray(shader.vertexNormalAttribute)
 
         // Set up light attribute
@@ -86,7 +68,7 @@ export function initShaderStoreList(){
         shader.pMatrix = gl.getUniformLocation(program, "pMatrix")
         shader.mvMatrix = gl.getUniformLocation(program, "mvMatrix")
 
-        ShaderStoreList[shaderName] = new Store(shader)
+        ShaderRepoList[shaderName] = new Repo(shader)
     }
 
 }

@@ -1,20 +1,20 @@
 <script lang="ts">
-    import type Store from "$class/Store"
-    import type { Item } from "$store/ItemStore"
-
+    import type { ItemStore } from "$utils/Type";
+    
     import TranslateBlock from "./TranslateBlock.svelte"
     import RotateBlock from "./RotateBlock.svelte"
     import ScaleBlock from "./ScaleBlock.svelte"
     import ShearBlock from "./ShearBlock.svelte"
 
-    export let itemStore: Store<Item>
+    export let store: ItemStore
 </script>
 
+
 <div>
-    <TranslateBlock {itemStore}/>
-    <RotateBlock {itemStore}/>
-    <ScaleBlock {itemStore}/>
-    <ShearBlock {itemStore}/>
+    <TranslateBlock {store}/>
+    <RotateBlock {store}/>
+    <ScaleBlock {store}/>
+    <ShearBlock {store}/>
 </div>
 
 <style lang="scss">

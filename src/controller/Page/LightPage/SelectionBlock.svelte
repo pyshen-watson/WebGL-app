@@ -1,13 +1,8 @@
 <script lang="ts">
-    import type { Light } from "$store/LightStore"
-    import type { Writable } from "svelte/store"
-    import type { Vec3 } from "$class/Type"
-    import type Store from "$class/Store"
+    import type { Vec3, LightStore } from "$utils/Type"
     import Pixel from "$components/Pixel.svelte"
-    export let lightStore:Store<Light>
 
-    let store: Writable<Light> = lightStore.store
-
+    export let store: LightStore
 
     // Part.1 Generate Color Array, from #ffffff to #000000
     const colorLevel:string[] = ["ff", "80", "00"]

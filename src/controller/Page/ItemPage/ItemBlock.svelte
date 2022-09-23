@@ -1,18 +1,17 @@
 <script lang="ts">
-    import type Store from "$class/Store"
-    import type { Item } from "$store/ItemStore"
-
+    import type { ItemRepo, ItemStore } from "$utils/Type"
     import ModelBlock from "./ModelBlock.svelte"
     import ShaderBlock from "./ShaderBlock.svelte"
     import MaterialBlock from "./MaterialBlock.svelte"
 
-    export let itemStore: Store<Item>
+    export let repo: ItemRepo
+    let store:ItemStore = repo.getStore()
 </script>
 
 <div>
-    <ModelBlock {itemStore}/>
-    <ShaderBlock {itemStore}/>
-    <MaterialBlock {itemStore}/>
+    <ModelBlock {repo}/>
+    <ShaderBlock {store}/>
+    <MaterialBlock {store}/>
 </div>
 
 <style lang="scss">

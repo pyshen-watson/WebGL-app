@@ -1,13 +1,8 @@
 <script lang="ts">
-    import type { Light } from "$store/LightStore"
-    import type { Writable } from "svelte/store"
-    import type Store from "$class/Store"
+    import type { LightStore } from "$utils/Type"
     import Bar from "$components/Bar.svelte"
 
-    export let lightStore:Store<Light>
-
-    let store: Writable<Light> = lightStore.store
-
+    export let store: LightStore
 </script>
 
 <div>
@@ -20,5 +15,4 @@
     div{
         display: grid;
     }
-
 </style>

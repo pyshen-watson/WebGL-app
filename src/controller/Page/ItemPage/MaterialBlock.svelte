@@ -1,12 +1,8 @@
 <script lang="ts">
-
-    import type { Item } from "$store/ItemStore"
-    import type { Writable } from "svelte/store"
-    import type Store from "$class/Store"
+    import type { ItemStore } from "$utils/Type"
     import Bar from "$components/Bar.svelte"
 
-    export let itemStore:Store<Item>
-    let store:Writable<Item> = itemStore.store
+    export let store:ItemStore
 </script>
 
 <div>

@@ -1,23 +1,15 @@
 <script lang="ts">
-    import type { Item } from "$store/ItemStore"
-    import type { Writable } from "svelte/store"
-    import type Store from "$class/Store"
-    import { ShaderStoreList } from "$store/ShaderStore"
+    import type { ItemStore } from "$utils/Type"
+    import { ShaderRepoList } from "$repo/ShaderRepo"
     import Select from "$components/Select.svelte"
 
-    export let itemStore:Store<Item>
-
-    let store: Writable<Item> = itemStore.store
+    export let store: ItemStore
 </script>
 
 <div>
     <Select
         title="Shader"
         bind:value={$store.shaderName}
-        options={Object.keys(ShaderStoreList)}
+        options={Object.keys(ShaderRepoList)}
     />
 </div>
-
-<style lang="scss">
-
-</style>
