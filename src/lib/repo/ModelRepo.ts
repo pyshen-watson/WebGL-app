@@ -41,7 +41,9 @@ export async function initModelRepoList(){
     }
 }
 
-import type { Vec3, ItemRepo, ModelRepo } from '$utils/Type'
+import type { ItemRepo, ModelRepo } from '$utils/Type'
+import deepcopy from '$utils/Deepcopy'
+
 export function changeModel(itemRepo:ItemRepo, modelName:string){
 
     itemRepo.set('modelName', modelName)
@@ -50,13 +52,9 @@ export function changeModel(itemRepo:ItemRepo, modelName:string){
     if (!modelRepo) { return } // Invalid modelName such as 'Hide'
 
     let model:Model = modelRepo.getInstance()
-    itemRepo.set('scaling_origin', model.scale)
-    itemRepo.set('rotation_direction', model.rotationDirection)
-    itemRepo.set('rotation_degree', model.rotationDegree)
-    itemRepo.set('rotation_auto', model.rotationAuto)
-
-    let location:Vec3 = [0,0,0]
-    for(let i=0; i<3; i++)
-        location[i] = itemRepo.get('location')[i] + model.shift[i]
-    itemRepo.set('location', location)
+    itemRepo.set('scaling_origin', deepcopy(model.scale))
+    itemRepo.set('rotation_direction', deepcopy(model.rotationDirection))
+    itemRepo.set('rotation_degree', deepcopy(model.rotationDegree))
+    itemRepo.set('rotation_auto', deepcopy(model.rotationAuto))
+    itemRepo.set('location_shift', deepcopy(model.locationShift))
 }

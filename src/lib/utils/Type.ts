@@ -18,7 +18,7 @@ export type Model = {
     rotationDirection: Vec3
     rotationDegree: Vec3
     rotationAuto: boolean
-    shift: Vec3
+    locationShift: Vec3
 
     vertexPositions: number[]
     vertexNormals: number[]
@@ -61,7 +61,8 @@ export type Item = {
     shaderName: string
     modelName: string
 
-    location: Vec3
+    location_origin: Vec3
+    location_shift: Vec3
 
     rotation_degree: Vec3
     rotation_direction: Vec3

@@ -21,7 +21,7 @@
 
     <Bar
         title="Translation"
-        bind:value={$store.location[direction]}
+        bind:value={$store.location_shift[direction]}
         range={[-150, 150, 1]}
     />
 
@@ -29,7 +29,7 @@
         {#each Object.keys(dirMap) as dir, i}
             <Label
                 title={dir}
-                bind:value={$store.location[i]}
+                bind:value={$store.location_shift[i]}
                 active={direction===i}
                 eventName={eventName}
                 on:TranDirChange={dirChangeHandler}

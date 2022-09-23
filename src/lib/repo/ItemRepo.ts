@@ -11,7 +11,8 @@ for(let i=0; i<3; i++){
         modelName: "Teapot",
         shaderName: defaultShaderName[i],
 
-        location: [ (i-1)*55, 0, -100],
+        location_origin: [ (i-1)*55, 0, -100],
+        location_shift: [ 0, 0, 0],
 
         rotation_degree: [0, 0, 0],
         rotation_direction: [0, 1, 0],
