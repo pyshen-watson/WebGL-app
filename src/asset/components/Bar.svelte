@@ -19,35 +19,29 @@
 
 </script>
 
-<div class="bar">
+<div class="main">
 
-    <span class="title">
-        {title}<i class="fa fa-refresh" aria-hidden="true" on:click={clickHandler}></i>
+    <span class="title"  on:click={clickHandler}>
+        {title}<i class="fa fa-refresh" aria-hidden="true"/>
+    </span>
+
+    <span class="bar" class:end={!displayValue}>
+        {min}
+        <input type="range" bind:value={value} min={min} max={max} step={step}>
+        {max}
     </span>
 
     {#if displayValue}
-        <span class="bar">
-            <div> {min} </div>
-            <input type="range" bind:value={value} min={min} max={max} step={step}>
-            <div> {max} </div>
-        </span>
-
-        <span class="value end">
-            <input type="number" step={step} bind:value={value}>
-        </span>
-    {:else}
-        <span class="bar end">
-            <div> {min} </div>
-            <input type="range" bind:value={value} min={min} max={max} step={step}>
-            <div> {max} </div>
-        </span>
+    <span class="value end">
+        <input type="number" step={step} bind:value={value}>
+    </span>
     {/if}
 
 </div>
 
 <style lang="scss">
 
-    .bar{
+    .main{
         display: flex;
         justify-content: center;
         align-items: center;
@@ -63,6 +57,19 @@
             text-align: center;
             font-weight: 600;
             display: flex;
+            cursor: pointer;
+
+            i{
+                margin-left: 0.5rem;
+            }
+
+            &:hover{
+                color: white;
+                i{
+                    color: white;
+                    font-weight: 800;
+                }
+            }
         }
 
         .bar{
@@ -95,15 +102,7 @@
             border-radius: 0 1rem 1rem 0;
         }
 
-        i{
-            margin-left: 0.5rem;
-            cursor: pointer;
 
-            &:hover{
-                color: white;
-                font-weight: 800;
-            }
-        }
 
     }
 
