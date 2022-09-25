@@ -2,6 +2,7 @@ import type { Writable } from 'svelte/store'
 import type Repository from '$class/Repository'
 
 export type Vec3 = [number, number, number]
+export type Vec8 = [number, number, number, number, number, number, number, number]
 
 export type GL = {
     canvas:HTMLCanvasElement
@@ -81,6 +82,15 @@ export type Item = {
     material_Kd: number
     material_Ks: number
     material_Shininess: number
+
+    motion_crazy: boolean
+    motion_vibing: boolean
+    motion_shaking: boolean
+    motion_nodding: boolean
+    motion_jumping: boolean
+    motion_running: boolean
+    motion_backing: boolean
+    motion_swinging: boolean
 }
 export type ItemStore = Writable<Item>
 export type ItemRepo = Repository<Item>

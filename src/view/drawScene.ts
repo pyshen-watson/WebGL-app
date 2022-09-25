@@ -10,6 +10,7 @@ import translate from './Transforms/translate'
 import rotate from './Transforms/rotate'
 import scale from './Transforms/scale'
 import shear from './Transforms/shear'
+import motion from './Transforms/motion'
 
 let mvMatrix = mat4.create() // perspective matrix
 let pMatrix = mat4.create() // model-view matrix
@@ -40,6 +41,7 @@ function drawScene(){
         mvMatrix = rotate(mvMatrix, itemRepo)
         mvMatrix = scale(mvMatrix, item)
         mvMatrix = shear(mvMatrix, item)
+        mvMatrix = motion(mvMatrix, item)
 
 
         gl.useProgram(shader.program)
@@ -60,7 +62,7 @@ function drawScene(){
             let light = LightRepoList[lightID].getInstance()
             gl.uniform3fv(shader.lightColor[lightID], light.color)
             gl.uniform4fv(shader.lightPosition[lightID], light.location.concat([1.0]))
-            
+
         }
 
         gl.uniform1f(shader.Ka, item.material_Ka)

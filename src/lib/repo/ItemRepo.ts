@@ -30,7 +30,16 @@ for(let i=0; i<3; i++){
         material_Ka: 0.1,
         material_Kd: 0.1,
         material_Ks: 0.1,
-        material_Shininess: 1
+        material_Shininess: 1,
+
+        motion_crazy: false,
+        motion_vibing: false,
+        motion_shaking: false,
+        motion_nodding: false,
+        motion_jumping: false,
+        motion_running: false,
+        motion_backing: false,
+        motion_swinging: false
     })
 
     ItemRepoList.push(repo)

@@ -14,8 +14,6 @@
 
     const tabClickHandler = (e:CustomEvent) => {
         selectID = e.detail
-        console.log(selectID);
-
     }
 
 </script>

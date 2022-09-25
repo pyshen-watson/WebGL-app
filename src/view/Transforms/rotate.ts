@@ -11,7 +11,8 @@ function rotate(mvMatrix:mat4, itemRepo:ItemRepo){
         let now = getNow()
         let newAngle = item.rotation_lastAngle + item.rotation_speed * ((now - item.rotation_lastTime) / 1000)
         itemRepo.set('rotation_lastAngle', newAngle)
-        itemRepo.set('rotation_lastTime', now)
+        if(!item.motion_crazy) // Crazy rotate
+            itemRepo.set('rotation_lastTime', now)
         mat4.rotate(mvMatrix, mvMatrix, degToRad(item.rotation_lastAngle), item.rotation_direction)
     }
 
