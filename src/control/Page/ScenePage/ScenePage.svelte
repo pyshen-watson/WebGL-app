@@ -2,8 +2,9 @@
     import ImageButton from '$components/ImageButton.svelte'
     import Disco from './Disco'
     import Boxing from './Boxing'
+    import Watering from './Watering'
 
-    let sceneList = [Disco, Boxing]
+    let sceneList = [Disco, Boxing, Watering]
     let sceneName = ""
 
     const sceneChangeHandler = (e:CustomEvent) => {
