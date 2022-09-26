@@ -15,6 +15,8 @@ import motion from './Transforms/Motion'
 
 import flashing from './LightEffects/Flashing'
 import changing from './LightEffects/Changing'
+import moving from './LightEffects/Moving'
+import dimming from './LightEffects/Dimming'
 
 let mvMatrix = mat4.create() // perspective matrix
 let pMatrix = mat4.create() // model-view matrix
@@ -36,6 +38,8 @@ function drawScene(){
         let store = LightStoreList[id]
         flashing(store)
         changing(store)
+        moving(store)
+        dimming(store)
     }
 
     for(let id=0; id<3; id++){
