@@ -14,6 +14,7 @@ import shear from './Transforms/Shear'
 import motion from './Transforms/Motion'
 
 import flashing from './LightEffects/Flashing'
+import changing from './LightEffects/Changing'
 
 let mvMatrix = mat4.create() // perspective matrix
 let pMatrix = mat4.create() // model-view matrix
@@ -31,7 +32,10 @@ function drawScene(){
     mat4.perspective(pMatrix, 45, webgl.width / webgl.height, 0.1, 200)
 
     for( let id=0; id<3; id++){
-        flashing(LightStoreList[id])
+
+        let store = LightStoreList[id]
+        flashing(store)
+        changing(store)
     }
 
     for(let id=0; id<3; id++){
