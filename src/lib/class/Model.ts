@@ -40,7 +40,7 @@ class Model{
     constructor(gl:WebGLRenderingContext, option:ModelOption){
 
         this.scale = option.scale
-        this.rotationDirection = option.rotationDegree
+        this.rotationDirection = option.rotationDirection
         this.rotationDegree = option.rotationDegree
         this.rotationAuto = option.rotationAuto
         this.locationShift = option.locationShift

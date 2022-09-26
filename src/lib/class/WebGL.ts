@@ -11,6 +11,10 @@ class WebGL{
         this.height = canvas.height
     }
 
+    setColor(red:number, green:number, blue:number, alpha:number){
+        this.gl.clearColor(red, green, blue, alpha)
+    }
+
 }
 
 export default WebGL

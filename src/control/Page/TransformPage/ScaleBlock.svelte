@@ -8,10 +8,12 @@
     export let store: ItemStore
     let direction: number = 0
 
-    let allRatio:number = 1
+    let allRatio:number=0
     $:{
-        for(let i=0; i<3; i++)
+        if(allRatio > 0){
+            for(let i=0; i<3; i++)
             $store.scaling.ratio[i] = allRatio
+        }
     }
 
 

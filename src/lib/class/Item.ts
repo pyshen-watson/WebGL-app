@@ -7,7 +7,7 @@ import ItemMotionList from "./ItemMotionList"
 
 class Item{
 
-    modelName:string
+    modelName = 'Teapot'
     shaderName:string
     location = new Location()
     rotation = new Rotation()
@@ -16,8 +16,7 @@ class Item{
     material = new Material()
     motion = new ItemMotionList()
 
-    constructor(modelName:string, shaderName:string){
-        this.modelName = modelName
+    constructor(shaderName:string){
         this.shaderName = shaderName
     }
 }

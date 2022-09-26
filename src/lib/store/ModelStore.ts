@@ -45,6 +45,8 @@ export function changeModel(itemStore:ItemStore, modelName:string){
     if (!modelStore) { return } // Invalid modelName such as 'Hide'
 
     let model:Model = get(modelStore)
+    console.log(model);
+
     itemStore.update(($store) => {
         $store.scaling.origin = deepcopy(model.scale)
         $store.rotation.direction = deepcopy(model.rotationDirection)

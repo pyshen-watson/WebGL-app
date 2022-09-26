@@ -8,7 +8,7 @@ export let ItemStoreList: ItemStore[] = []
 
 for(let i=0; i<3; i++){
 
-    let item = new Item("Teapot", defaultShaderName[i])
+    let item = new Item(defaultShaderName[i])
     item.location.origin = [ (i-1)*55, 0, -100]
 
     let store = writable(item)
