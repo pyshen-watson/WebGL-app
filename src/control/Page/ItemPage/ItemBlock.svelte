@@ -1,15 +1,13 @@
 <script lang="ts">
-    import type { ItemRepo, ItemStore } from "$utils/Type"
+    import type { ItemStore } from "$utils/Type"
     import ModelBlock from "./ModelBlock.svelte"
     import ShaderBlock from "./ShaderBlock.svelte"
     import MaterialBlock from "./MaterialBlock.svelte"
-
-    export let repo: ItemRepo
-    let store:ItemStore = repo.getStore()
+    export let store: ItemStore
 </script>
 
 <div>
-    <ModelBlock {repo}/>
+    <ModelBlock {store}/>
     <ShaderBlock {store}/>
     <MaterialBlock {store}/>
 </div>

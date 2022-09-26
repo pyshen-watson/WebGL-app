@@ -10,7 +10,7 @@
 
     let menuOpen:boolean = true
 
-    let selectID:number = 0
+    let selectID:number = 3
 
     const tabClickHandler = (e:CustomEvent) => {
         selectID = e.detail

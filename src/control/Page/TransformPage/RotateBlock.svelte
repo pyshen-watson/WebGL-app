@@ -3,7 +3,7 @@
     import Bar from "$components/Bar.svelte"
     import Label from "$components/Label.svelte"
 
-    import type { ItemStore } from "$utils/Type";
+    import type { ItemStore, ModelStore } from "$utils/Type";
     export let store: ItemStore
     let direction: number = $store.rotation_direction.indexOf(1)
 
@@ -17,10 +17,11 @@
         $store.rotation_auto = !$store.rotation_auto
     }
 
-    import { ModelRepoList } from '$repo/ModelRepo'
+    import { ModelStoreList } from "$store/ModelStore";
     import deepcopy from "$utils/Deepcopy"
+    let modelStore:ModelStore = ModelStoreList[$store.modelName]
     const degreeResetHandler = (e:CustomEvent) => {
-        $store.rotation_degree = deepcopy(ModelRepoList[$store.modelName].get('rotationDegree'))
+        $store.rotation_degree = deepcopy($modelStore.rotationDegree)
         $store.rotation_auto = false
     }
 

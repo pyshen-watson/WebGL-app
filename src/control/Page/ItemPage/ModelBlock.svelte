@@ -1,19 +1,18 @@
 <script lang="ts">
-    import type { ItemRepo, ItemStore } from "$utils/Type"
-    import { changeModel, ModelRepoList } from "$repo/ModelRepo"
+    import type { ItemStore } from "$utils/Type"
+    import { changeModel, ModelStoreList } from "$store/ModelStore"
     import Select from "$components/Select.svelte"
 
-    export let repo: ItemRepo
-    let store:ItemStore = repo.getStore()
+    export let store: ItemStore
 
-    let options = Object.keys(ModelRepoList)
+    let options = Object.keys(ModelStoreList)
     options.push('Hide')
 
-    let modelName:string = $store.modelName
+    let modelName = $store.modelName
 
     $:{
         if(modelName !== $store.modelName){
-            changeModel(repo, modelName)
+            changeModel(store, modelName)
         }
     }
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ItemStore } from "$utils/Type"
-    import { ShaderRepoList } from "$repo/ShaderRepo"
+    import { ShaderStoreList } from "$store/ShaderStore"
     import Select from "$components/Select.svelte"
 
     export let store: ItemStore
@@ -10,6 +10,6 @@
     <Select
         title="Shader"
         bind:value={$store.shaderName}
-        options={Object.keys(ShaderRepoList)}
+        options={Object.keys(ShaderStoreList)}
     />
 </div>

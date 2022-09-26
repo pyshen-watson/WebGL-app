@@ -1,11 +1,11 @@
 <script lang="ts">
     import LightBlock from "./LightBlock.svelte"
-    import { LightRepoList } from "$repo/LightRepo"
+    import { LightStoreList } from "$store/LightStore";
 </script>
 
 <div>
-    {#each LightRepoList as lightRepo}
-        <LightBlock store={lightRepo.getStore()}/>
+    {#each LightStoreList as store}
+        <LightBlock {store}/>
     {/each}
 </div>
 

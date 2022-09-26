@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte'
-    import { initGLRepo } from '$repo/GLRepo'
-    import { initModelRepoList } from '$repo/ModelRepo'
-    import { initShaderRepoList } from '$repo/ShaderRepo'
+    import { initWebGLStore } from '$store/WebGLStore'
+    import { initModelStoreList } from '$store/ModelStore'
+    import { initShaderStoreList } from '$store/ShaderStore'
     import nextFrame from './nextFrame'
 
     let canvas:HTMLCanvasElement
@@ -15,10 +15,9 @@
         canvas.width = width
         canvas.height = height
 
-        initGLRepo({canvas, width, height})
-        initModelRepoList()
-        initShaderRepoList()
-
+        initWebGLStore({canvas, width, height})
+        initModelStoreList()
+        initShaderStoreList()
         nextFrame()
     })
 </script>

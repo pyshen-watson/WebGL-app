@@ -3,7 +3,7 @@
     import Bar from "$components/Bar.svelte"
     import Label from "$components/Label.svelte"
 
-    import type { ItemStore } from "$utils/Type"
+    import type { ItemStore, ModelStore } from "$utils/Type"
     export let store: ItemStore
     let direction: number = 0
 
@@ -13,10 +13,11 @@
         direction = dirMap[e.detail]
     }
 
-    import { ModelRepoList } from "$repo/ModelRepo"
+    import { ModelStoreList } from "$store/ModelStore"
     import deepcopy from "$utils/Deepcopy"
+    let modelStore:ModelStore = ModelStoreList[$store.modelName]
     const shiftResetHander = (e:CustomEvent) => {
-        $store.location_shift = deepcopy(ModelRepoList[$store.modelName].get('locationShift'))
+        $store.location_shift = deepcopy($modelStore.locationShift)
     }
 </script>
 

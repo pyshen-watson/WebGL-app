@@ -1,44 +1,53 @@
 import { mat4 } from 'gl-matrix'
-import type { Model, Shader, ItemRepo } from '$utils/Type'
-import { glRepo } from '$repo/GLRepo'
-import { ModelRepoList } from '$repo/ModelRepo'
-import { ShaderRepoList } from '$repo/ShaderRepo'
-import { ItemRepoList } from '$repo/ItemRepo'
-import { LightRepoList } from '$repo/LightRepo'
+import { get } from 'svelte/store'
+import type { Model, Shader } from '$utils/Type'
+import { webglStore } from '$store/WebGLStore'
+import { ModelStoreList } from '$store/ModelStore'
+import { ShaderStoreList } from '$store/ShaderStore'
+import { ItemStoreList } from '$store/ItemStore'
+import { LightStoreList } from '$store/LightStore'
 
-import translate from './Transforms/translate'
-import rotate from './Transforms/rotate'
-import scale from './Transforms/scale'
-import shear from './Transforms/shear'
-import motion from './Transforms/motion'
+import translate from './Transforms/Translate'
+import rotate from './Transforms/Rotate'
+import scale from './Transforms/Scale'
+import shear from './Transforms/Shear'
+import motion from './Transforms/Motion'
+
+import flashing from './LightEffects/Flashing'
 
 let mvMatrix = mat4.create() // perspective matrix
 let pMatrix = mat4.create() // model-view matrix
 
+
+
 function drawScene(){
 
+    const webgl = get(webglStore)
+    const gl = webgl.gl
+
     // Initialize viewport and perspective matrix
-    const GL = glRepo.getInstance()
-    const gl = GL.gl
-
-    gl.viewport(0, 0, GL.width, GL.height)
+    gl.viewport(0, 0, webgl.width, webgl.height)
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
-    mat4.perspective(pMatrix, 45, GL.width / GL.height, 0.1, 200)
+    mat4.perspective(pMatrix, 45, webgl.width / webgl.height, 0.1, 200)
 
-    for(let itemID=0; itemID<3; itemID++){
+    for( let id=0; id<3; id++){
+        flashing(LightStoreList[id])
+    }
 
-        let itemRepo = ItemRepoList[itemID]
-        let item = itemRepo.getInstance()
+    for(let id=0; id<3; id++){
+
+        let itemStore = ItemStoreList[id]
+        let item = get(itemStore)
 
         // This case happens when model name is 'Hide' or the model is still loading
-        if( !ModelRepoList[item.modelName] ) {continue}
+        if( !ModelStoreList[item.modelName] ) {continue}
 
-        let shader:Shader = ShaderRepoList[item.shaderName].getInstance()
-        let model:Model = ModelRepoList[item.modelName].getInstance()
+        let shader:Shader = get(ShaderStoreList[item.shaderName])
+        let model:Model = get(ModelStoreList[item.modelName])
 
         mat4.identity(mvMatrix)
         mvMatrix = translate(mvMatrix, item)
-        mvMatrix = rotate(mvMatrix, itemRepo)
+        mvMatrix = rotate(mvMatrix, itemStore)
         mvMatrix = scale(mvMatrix, item)
         mvMatrix = shear(mvMatrix, item)
         mvMatrix = motion(mvMatrix, item)
@@ -59,7 +68,7 @@ function drawScene(){
 
         for(let lightID=0; lightID<3; lightID++){
 
-            let light = LightRepoList[lightID].getInstance()
+            let light = get(LightStoreList[lightID])
             gl.uniform3fv(shader.lightColor[lightID], light.color)
             gl.uniform4fv(shader.lightPosition[lightID], light.location.concat([1.0]))
 

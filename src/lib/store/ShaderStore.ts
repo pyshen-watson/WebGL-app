@@ -1,28 +1,29 @@
-import Repo from "$class/Repository"
-import { glRepo } from "./GLRepo"
-import type { Shader } from "$utils/Type"
+import { webglStore } from "./WebGLStore"
+import type { Shader, ShaderStore } from "$utils/Type"
+import { writable, get } from "svelte/store"
 
 import { flatVertex, flatFragment } from '$shader/Flat'
 import { gouraudVertex, gouraudFragment } from '$shader/Gouraud'
 import { phongVertex, phongFragment } from '$shader/Phong'
 import { celVertex, celFragment } from '$shader/Cel'
 
-export let ShaderRepoList = {
-    'Flat':null,
-    'Gouraud':null,
-    'Phong':null,
-    'Cel':null,
+export let ShaderStoreList = {
+    Flat: null,
+    Gouraud: null,
+    Phong: null,
+    Cel: null
 }
 
-export function initShaderRepoList(){
+export function initShaderStoreList(){
 
-    const gl:WebGLRenderingContext = glRepo.get('gl')
+    let webgl = get(webglStore)
+    const gl:WebGLRenderingContext = webgl.gl
 
     let ShaderSourceList = {
-        'Flat': [flatVertex, flatFragment],
-        'Gouraud': [gouraudVertex, gouraudFragment],
-        'Phong': [phongVertex, phongFragment],
-        'Cel': [celVertex, celFragment]
+        Flat: [flatVertex, flatFragment],
+        Gouraud: [gouraudVertex, gouraudFragment],
+        Phong: [phongVertex, phongFragment],
+        Cel: [celVertex, celFragment]
     }
 
     function createShader(source:string, type:number):WebGLShader{
@@ -32,7 +33,7 @@ export function initShaderRepoList(){
         return gl.getShaderParameter(shader, gl.COMPILE_STATUS) ? shader : null
     }
 
-    for(let shaderName of Object.keys(ShaderRepoList)){
+    for(let shaderName of Object.keys(ShaderStoreList)){
 
         // Set up program and shader
         let program = gl.createProgram()
@@ -68,7 +69,7 @@ export function initShaderRepoList(){
         shader.pMatrix = gl.getUniformLocation(program, "pMatrix")
         shader.mvMatrix = gl.getUniformLocation(program, "mvMatrix")
 
-        ShaderRepoList[shaderName] = new Repo(shader)
+        ShaderStoreList[shaderName] = writable(shader)
     }
 
 }

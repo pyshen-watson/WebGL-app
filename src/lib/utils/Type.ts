@@ -1,17 +1,14 @@
 import type { Writable } from 'svelte/store'
-import type Repository from '$class/Repository'
 
 export type Vec3 = [number, number, number]
-export type Vec8 = [number, number, number, number, number, number, number, number]
 
-export type GL = {
+export type WebGL = {
     canvas:HTMLCanvasElement
     width:number
     height:number
     gl?: WebGLRenderingContext
 }
-export type GLStore = Writable<GL>
-export type GLRepo = Repository<GL>
+export type WebGLStore = Writable<WebGL>
 
 
 export type Model = {
@@ -31,7 +28,6 @@ export type Model = {
     fragNumber?:number
 }
 export type ModelStore = Writable<Model>
-export type ModelRepo = Repository<Model>
 
 
 export type Shader = {
@@ -54,7 +50,6 @@ export type Shader = {
     mvMatrix?: WebGLUniformLocation
 }
 export type ShaderStore = Writable<Shader>
-export type ShaderRepo = Repository<Shader>
 
 
 export type Item = {
@@ -93,12 +88,22 @@ export type Item = {
     motion_swinging: boolean
 }
 export type ItemStore = Writable<Item>
-export type ItemRepo = Repository<Item>
 
+
+export type LightMotionState = {
+    on: boolean
+    init: boolean
+    origin: Vec3
+}
 
 export type Light = {
+
     location: Vec3
     color: Vec3
+
+    motion_flashing: LightMotionState
+    motion_changing: LightMotionState
+    motion_moving: LightMotionState
+    motion_dimming: LightMotionState
 }
 export type LightStore = Writable<Light>
-export type LightRepo = Repository<Light>

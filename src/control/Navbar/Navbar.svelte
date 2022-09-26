@@ -1,13 +1,11 @@
 <script lang="ts">
+    import NavbarTab from "./NavbarTab.svelte";
     import { createEventDispatcher }from 'svelte'
     const dispatcher = createEventDispatcher()
-
-    import NavbarTab from "./NavbarTab.svelte";
 
     export let selectID:number
 
     let titleList = [ "Item", "Transform", "Light", "Motion", "Scene", "Info", "About" ]
-
 </script>
 
 <div>

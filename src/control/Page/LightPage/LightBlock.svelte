@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { LightStore } from "$utils/Type";
+    import type { LightStore } from "$utils/Type"
     import LocationBlock from './LocationBlock.svelte'
     import ColorBlock from './ColorBlock.svelte'
     import SelectionBlock from "./SelectionBlock.svelte"

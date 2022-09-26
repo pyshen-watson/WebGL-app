@@ -1,12 +1,14 @@
-import type { ItemRepo } from '$utils/Type'
 import { getNow } from '$utils/TimeTools'
-import Repo from '$class/Repository'
+import { writable } from 'svelte/store'
+import type { ItemStore } from '$utils/Type'
 
 const defaultShaderName = ["Flat", "Gouraud", "Phong"]
-export let ItemRepoList: ItemRepo[] = []
+
+export let ItemStoreList: ItemStore[] = []
+
 for(let i=0; i<3; i++){
 
-    let repo:ItemRepo = new Repo({
+    let store:ItemStore = writable({
 
         modelName: "Teapot",
         shaderName: defaultShaderName[i],
@@ -42,5 +44,5 @@ for(let i=0; i<3; i++){
         motion_swinging: false
     })
 
-    ItemRepoList.push(repo)
+    ItemStoreList.push(store)
 }
