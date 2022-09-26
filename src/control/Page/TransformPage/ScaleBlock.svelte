@@ -11,7 +11,7 @@
     let allRatio:number = 1
     $:{
         for(let i=0; i<3; i++)
-            $store.scaling_ratio[i] = allRatio
+            $store.scaling.ratio[i] = allRatio
     }
 
 
@@ -21,7 +21,7 @@
     }
 
     const scaleResetHandler = (e:CustomEvent) => {
-        $store.scaling_ratio = [1,1,1]
+        $store.scaling.ratio = [1,1,1]
         allRatio = 1
     }
 
@@ -31,18 +31,19 @@
 
     <Bar
         title="Scale"
-        bind:value={$store.scaling_ratio[direction]}
+        bind:value={$store.scaling.ratio[direction]}
         range={[0, 5, 0.1]}
         eventName="scaleRatioReset"
         on:scaleRatioReset={scaleResetHandler}
     />
 
-    <Flex --align="center" --gap="1rem">
+    <Flex --align="end">
         {#each Object.keys(dirMap) as dir, i}
             <Label
                 title={dir}
-                bind:value={$store.scaling_ratio[i]}
+                bind:value={$store.scaling.ratio[i]}
                 active={direction===i}
+                step={0.1}
                 eventName="ScaleDirChange"
                 on:ScaleDirChange={dirChangeHandler}
             />
@@ -51,6 +52,7 @@
             title="All"
             bind:value={allRatio}
             active={true}
+            step={0.1}
         />
     </Flex>
 

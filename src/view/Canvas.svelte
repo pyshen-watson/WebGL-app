@@ -1,4 +1,5 @@
 <script lang="ts">
+    import WebGL from '$class/WebGL'
     import { onMount } from 'svelte'
     import { initWebGLStore } from '$store/WebGLStore'
     import { initModelStoreList } from '$store/ModelStore'
@@ -15,7 +16,9 @@
         canvas.width = width
         canvas.height = height
 
-        initWebGLStore({canvas, width, height})
+        let webgl = new WebGL(canvas)
+
+        initWebGLStore(webgl)
         initModelStoreList()
         initShaderStoreList()
         nextFrame()

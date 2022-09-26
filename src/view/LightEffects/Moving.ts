@@ -7,10 +7,10 @@ function moving(store:LightStore){
     let light = get(store)
 
     // Initialization
-    if(light.motion_moving.on && !light.motion_moving.init){
+    if(light.motion.moving.on && !light.motion.moving.init){
 
         store.update(($store) => {
-            $store.motion_moving.origin = deepcopy($store.location)
+            $store.motion.moving.origin = deepcopy($store.location.shift)
             return $store
         })
 
@@ -22,13 +22,13 @@ function moving(store:LightStore){
             store.update(($store) => {
 
                 let location:Vec3 = [r*Math.cos(theta), r*Math.sin(phi), r*Math.sin(theta)]
-                $store.location = location
+                $store.location.shift = location
                 theta = update(theta)
                 phi = update(phi)
 
-                if(!$store.motion_moving.on){
+                if(!$store.motion.moving.on){
                     clearInterval(process)
-                    $store.location = $store.motion_moving.origin
+                    $store.location.shift = $store.motion.moving.origin
                 }
                 return $store
             })
@@ -37,7 +37,7 @@ function moving(store:LightStore){
 
 
     store.update(($store) => {
-        $store.motion_moving.init = $store.motion_moving.on
+        $store.motion.moving.init = $store.motion.moving.on
         return $store
     })
 }

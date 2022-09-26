@@ -1,5 +1,6 @@
-import type { WebGL, WebGLStore } from '$utils/Type'
 import { writable } from 'svelte/store'
+import type WebGL from '$class/WebGL'
+import type { WebGLStore } from '$utils/Type'
 
 export let webglStore: WebGLStore
 export function initWebGLStore(webgl: WebGL){

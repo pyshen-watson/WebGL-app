@@ -21,10 +21,10 @@ function flashing(store:LightStore){
     let light = get(store)
 
     // Initialization
-    if(light.motion_flashing.on && !light.motion_flashing.init){
+    if(light.motion.flashing.on && !light.motion.flashing.init){
 
         store.update(($store) => {
-            $store.motion_flashing.origin = deepcopy(light.color)
+            $store.motion.flashing.origin = deepcopy(light.color)
             return $store
         })
 
@@ -36,9 +36,9 @@ function flashing(store:LightStore){
 
             store.update(($store) => {
 
-                if(!$store.motion_flashing.on){
+                if(!$store.motion.flashing.on){
                     clearInterval(process)
-                    $store.color = $store.motion_flashing.origin
+                    $store.color = $store.motion.flashing.origin
                 }
                 return $store
             })
@@ -47,7 +47,7 @@ function flashing(store:LightStore){
     }
 
     store.update(($store) => {
-        $store.motion_flashing.init = $store.motion_flashing.on
+        $store.motion.flashing.init = $store.motion.flashing.on
         return $store
     })
 

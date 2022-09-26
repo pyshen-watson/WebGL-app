@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ItemStore } from "$utils/Type";
-    
+
     import TranslateBlock from "./TranslateBlock.svelte"
     import RotateBlock from "./RotateBlock.svelte"
     import ScaleBlock from "./ScaleBlock.svelte"

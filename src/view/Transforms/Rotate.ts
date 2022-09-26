@@ -1,30 +1,24 @@
 import { mat4 } from 'gl-matrix'
+import { get } from 'svelte/store'
 import { degToRad } from '$utils/Math'
 import { getNow } from '$utils/TimeTools'
-import { get } from 'svelte/store'
-import type { Item, ItemStore } from '$utils/Type'
+import type { ItemStore } from '$utils/Type'
+import deepcopy from '$utils/Deepcopy'
 
 function rotate(mvMatrix:mat4, itemStore:ItemStore){
 
     let item = get(itemStore)
 
-    if(item.rotation_auto){
-        let now = getNow()
-        let newAngle = item.rotation_lastAngle + item.rotation_speed * ((now - item.rotation_lastTime) / 1000)
+    if(item.rotation.auto){
 
-        itemStore.update(($store) => {
-            $store.rotation_lastAngle = newAngle
-            if(!$store.motion_crazy)
-                $store.rotation_lastTime = now
-            return $store
-        })
-
-        mat4.rotate(mvMatrix, mvMatrix, degToRad(item.rotation_lastAngle), item.rotation_direction)
+        item.rotation.tick(getNow(), item.motion.crazy.on)
+        mat4.rotate(mvMatrix, mvMatrix, degToRad(item.rotation.lastAngle), item.rotation.direction)
     }
 
-    mat4.rotate(mvMatrix, mvMatrix, degToRad(item.rotation_degree[0]), [1,0,0])
-    mat4.rotate(mvMatrix, mvMatrix, degToRad(item.rotation_degree[1]), [0,1,0])
-    mat4.rotate(mvMatrix, mvMatrix, degToRad(item.rotation_degree[2]), [0,0,1])
+    let radian = item.rotation.radian
+    mat4.rotate(mvMatrix, mvMatrix, radian[0], [1,0,0])
+    mat4.rotate(mvMatrix, mvMatrix, radian[1], [0,1,0])
+    mat4.rotate(mvMatrix, mvMatrix, radian[2], [0,0,1])
 
     return mvMatrix
 }

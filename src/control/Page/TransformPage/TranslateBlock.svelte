@@ -17,7 +17,7 @@
     import deepcopy from "$utils/Deepcopy"
     let modelStore:ModelStore = ModelStoreList[$store.modelName]
     const shiftResetHander = (e:CustomEvent) => {
-        $store.location_shift = deepcopy($modelStore.locationShift)
+        $store.location.shift = deepcopy($modelStore.locationShift)
     }
 </script>
 
@@ -25,17 +25,17 @@
 
     <Bar
         title="Translation"
-        bind:value={$store.location_shift[direction]}
+        bind:value={$store.location.shift[direction]}
         range={[-150, 150, 1]}
         eventName="TranShiftReset"
         on:TranShiftReset={shiftResetHander}
     />
 
-    <Flex --align="center" --gap="1rem">
+    <Flex --align="end">
         {#each Object.keys(dirMap) as dir, i}
             <Label
                 title={dir}
-                bind:value={$store.location_shift[i]}
+                bind:value={$store.location.shift[i]}
                 active={direction===i}
                 eventName="TranDirChange"
                 on:TranDirChange={dirChangeHandler}

@@ -14,7 +14,7 @@
     }
 
     const degreeResetHandler = (e:CustomEvent) => {
-        $store.shearing_degree = [0,0,0]
+        $store.shearing.degree = [0,0,0]
     }
 </script>
 
@@ -22,17 +22,17 @@
 
     <Bar
         title="Shear"
-        bind:value={$store.shearing_degree[direction]}
+        bind:value={$store.shearing.degree[direction]}
         range={[-90, 90, 1]}
         eventName="ShearDegReset"
         on:ShearDegReset={degreeResetHandler}
     />
 
-    <Flex --align="center" --gap="1rem">
+    <Flex --align="end">
         {#each Object.keys(dirMap) as dir, i}
             <Label
                 title={dir}
-                bind:value={$store.shearing_degree[i]}
+                bind:value={$store.shearing.degree[i]}
                 active={direction===i}
                 eventName="ShearDirChange"
                 on:ShearDirChange={dirChangeHandler}

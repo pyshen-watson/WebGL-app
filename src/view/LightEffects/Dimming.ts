@@ -7,10 +7,10 @@ function dimming(store:LightStore){
     let light = get(store)
 
     // Initialization
-    if(light.motion_dimming.on && !light.motion_dimming.init){
+    if(light.motion.dimming.on && !light.motion.dimming.init){
 
         store.update(($store) => {
-            $store.motion_dimming.origin = deepcopy($store.color)
+            $store.motion.dimming.origin = deepcopy($store.color)
             $store.color = [0,0,0]
             return $store
         })
@@ -18,14 +18,14 @@ function dimming(store:LightStore){
         let process = setInterval(() => {
 
             store.update(($store) => {
-                $store.motion_flashing.on = false
-                $store.motion_changing.on = false
-                $store.motion_moving.on = false
+                $store.motion.flashing.on = false
+                $store.motion.changing.on = false
+                $store.motion.moving.on = false
                 $store.color = [0,0,0]
 
-                if(!$store.motion_dimming.on){
+                if(!$store.motion.dimming.on){
                     clearInterval(process)
-                    $store.color = $store.motion_dimming.origin
+                    $store.color = $store.motion.dimming.origin
                 }
                 return $store
             })
@@ -34,7 +34,7 @@ function dimming(store:LightStore){
     }
 
     store.update(($store) => {
-        $store.motion_dimming.init = $store.motion_dimming.on
+        $store.motion.dimming.init = $store.motion.dimming.on
         return $store
     })
 }

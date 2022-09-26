@@ -1,21 +1,14 @@
-import type { LightStore } from '$utils/Type'
+import Light from '$class/Light'
 import { writable } from 'svelte/store'
-
+import type { LightStore } from '$utils/Type'
 
 export let LightStoreList: LightStore[] = []
 
 for(let i=0; i<3; i++){
 
-    let store:LightStore = writable({
+    let light = new Light()
+    light.location.origin = [(i-1)*100, 0, 0]
 
-        location: [(i-1)*100, 0, 0],
-        color: [1, 1, 1],
-
-        motion_flashing: {on:false, init:false, origin:[0,0,0]},
-        motion_changing: {on:false, init:false, origin:[0,0,0]},
-        motion_moving: {on:false, init:false, origin:[0,0,0]},
-        motion_dimming: {on:false, init:false, origin:[0,0,0]}
-    })
-
+    let store = writable(light)
     LightStoreList.push(store)
 }

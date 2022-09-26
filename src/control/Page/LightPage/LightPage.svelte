@@ -1,6 +1,6 @@
 <script lang="ts">
     import LightBlock from "./LightBlock.svelte"
-    import { LightStoreList } from "$store/LightStore";
+    import { LightStoreList } from "$store/LightStore"
 </script>
 
 <div>

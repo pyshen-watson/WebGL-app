@@ -16,8 +16,9 @@
     "checkJs": true,
     "isolatedModules": true,
     "paths": {
-      "$utils/*": ["src/lib/utils/*"],
+      "$class/*": ["src/lib/class/*"],
       "$store/*": ["src/lib/store/*"],
+      "$utils/*": ["src/lib/utils/*"],
       "$shader/*": ["src/asset/shader/*"],
       "$components/*": ["src/asset/components/*"],
     }

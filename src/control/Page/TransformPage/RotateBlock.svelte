@@ -5,7 +5,7 @@
 
     import type { ItemStore, ModelStore } from "$utils/Type";
     export let store: ItemStore
-    let direction: number = $store.rotation_direction.indexOf(1)
+    let direction: number = $store.rotation.direction.indexOf(1)
 
 
     import { dirMap } from "$utils/Math"
@@ -14,20 +14,20 @@
     }
 
     const autoChangeHandler = (e:CustomEvent) => {
-        $store.rotation_auto = !$store.rotation_auto
+        $store.rotation.auto = !$store.rotation.auto
     }
 
     import { ModelStoreList } from "$store/ModelStore";
     import deepcopy from "$utils/Deepcopy"
     let modelStore:ModelStore = ModelStoreList[$store.modelName]
     const degreeResetHandler = (e:CustomEvent) => {
-        $store.rotation_degree = deepcopy($modelStore.rotationDegree)
-        $store.rotation_auto = false
+        $store.rotation.degree = deepcopy($modelStore.rotationDegree)
+        $store.rotation.auto = false
     }
 
     $:{
-        $store.rotation_direction  = [0.0, 0.0, 0.0]
-        $store.rotation_direction[direction]  = 1.0
+        $store.rotation.direction  = [0.0, 0.0, 0.0]
+        $store.rotation.direction[direction]  = 1.0
     }
 
 </script>
@@ -35,19 +35,19 @@
 <div>
     <Bar
         title="Rotation"
-        bind:value={$store.rotation_degree[direction]}
+        bind:value={$store.rotation.degree[direction]}
         range={[-360,360,1]}
         eventName="RotDegReset"
         on:RotDegReset={degreeResetHandler}
     />
 
-    <Flex --align="center" --gap="1rem">
+    <Flex --align="end">
 
         {#each Object.keys(dirMap) as dir, i}
             <Label
                 title={dir}
-                bind:value={$store.rotation_degree[i]}
-                active={$store.rotation_direction.indexOf(1)===i}
+                bind:value={$store.rotation.degree[i]}
+                active={$store.rotation.direction.indexOf(1)===i}
                 eventName="RotDirChange"
                 on:RotDirChange={directionChangeHandler}
             />
@@ -55,9 +55,9 @@
 
         <Label
             title="Speed"
-            bind:value={$store.rotation_speed}
+            bind:value={$store.rotation.speed}
             eventName="autoChange"
-            active={$store.rotation_auto}
+            active={$store.rotation.auto}
             on:autoChange={autoChangeHandler}
             step={30}
         />

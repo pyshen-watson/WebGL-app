@@ -1,11 +1,15 @@
 import { mat4 } from 'gl-matrix'
 import { get } from 'svelte/store'
-import type { Model, Shader } from '$utils/Type'
+
+
 import { webglStore } from '$store/WebGLStore'
 import { ModelStoreList } from '$store/ModelStore'
 import { ShaderStoreList } from '$store/ShaderStore'
 import { ItemStoreList } from '$store/ItemStore'
 import { LightStoreList } from '$store/LightStore'
+
+import type Model from '$class/Model'
+import type Shader from '$class/Shader'
 
 import translate from './Transforms/Translate'
 import rotate from './Transforms/Rotate'
@@ -78,14 +82,14 @@ function drawScene(){
 
             let light = get(LightStoreList[lightID])
             gl.uniform3fv(shader.lightColor[lightID], light.color)
-            gl.uniform4fv(shader.lightPosition[lightID], light.location.concat([1.0]))
+            gl.uniform4fv(shader.lightPosition[lightID], light.location.coordinate.concat([1.0]))
 
         }
 
-        gl.uniform1f(shader.Ka, item.material_Ka)
-        gl.uniform1f(shader.Kd, item.material_Kd)
-        gl.uniform1f(shader.Ks, item.material_Ks)
-        gl.uniform1f(shader.Shininess, item.material_Shininess)
+        gl.uniform1f(shader.Ka, item.material.Ka)
+        gl.uniform1f(shader.Kd, item.material.Kd)
+        gl.uniform1f(shader.Ks, item.material.Ks)
+        gl.uniform1f(shader.Shininess, item.material.Shininess)
 
         gl.drawArrays(gl.TRIANGLES, 0, model.fragNumber)
 

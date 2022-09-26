@@ -15,7 +15,7 @@
     }
 
     const locResetHandler = () => {
-        $store.location = [0,0,0]
+        $store.location.shift = [0,0,0]
     }
 </script>
 
@@ -23,7 +23,7 @@
 
     <Bar
         title="Location"
-        bind:value={$store.location[direction]}
+        bind:value={$store.location.shift[direction]}
         range={[-150, 150, 1]}
         eventName="LocReset"
         on:LocReset={locResetHandler}
@@ -33,7 +33,7 @@
         {#each Object.keys(dirMap) as dir, i}
             <Label
                 title={dir}
-                bind:value={$store.location[i]}
+                bind:value={$store.location.shift[i]}
                 active={direction===i}
                 eventName={eventName}
                 on:LocDirChange={dirChangeHandler}

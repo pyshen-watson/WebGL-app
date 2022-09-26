@@ -1,5 +1,6 @@
 import { webglStore } from "./WebGLStore"
-import type { Shader, ShaderStore } from "$utils/Type"
+import Shader from "$class/Shader"
+import type { ShaderStore } from "$utils/Type"
 import { writable, get } from "svelte/store"
 
 import { flatVertex, flatFragment } from '$shader/Flat'
@@ -43,9 +44,9 @@ export function initShaderStoreList(){
         gl.attachShader(program, fragmentShader)
         gl.linkProgram(program)
         gl.useProgram(program)
+        let shader = new Shader(program)
 
         // Set up vertex attribute
-        let shader:Shader = { program , lightColor:[], lightPosition:[]}
         shader.vertexPositionAttribute = gl.getAttribLocation(program, "aVertexPosition")
         gl.enableVertexAttribArray(shader.vertexPositionAttribute)
         shader.vertexColorAttribute = gl.getAttribLocation(program, "aVertexColor")
