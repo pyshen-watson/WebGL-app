@@ -5,6 +5,7 @@ import { changeModel } from '$store/ModelStore'
 import Rotation from '$class/Rotation'
 import ItemMotionList from '$class/ItemMotionList'
 import Light from '$class/Light'
+import Material from '$class/Material'
 
 
 let scene = {
@@ -25,6 +26,7 @@ let scene = {
             $store.scaling.ratio = [1, 1, 1]
             $store.shearing.degree = [0,0,0]
             $store.motion = new ItemMotionList()
+            $store.material = new Material()
             $store.motion.vibing.on = true
             $store.motion.jumping.on = true
             $store.motion.shaking.on = true
@@ -45,6 +47,7 @@ let scene = {
             $store.scaling.ratio = [5, 1, 1]
             $store.shearing.degree = [0, 0, 80]
             $store.motion = new ItemMotionList()
+            $store.material = new Material()
             $store.motion.crazy.on = true
             $store.motion.swinging.on = true
 
@@ -63,6 +66,7 @@ let scene = {
             $store.scaling.ratio = [1, 1, 1]
             $store.shearing.degree = [0,0,0]
             $store.motion = new ItemMotionList()
+            $store.material = new Material()
             $store.motion.vibing.on = true
             $store.motion.jumping.on = true
             $store.motion.shaking.on = true

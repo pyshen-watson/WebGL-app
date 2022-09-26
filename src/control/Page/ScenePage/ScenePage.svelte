@@ -3,8 +3,9 @@
     import Disco from './Disco'
     import Boxing from './Boxing'
     import Watering from './Watering'
+    import Driving from './Driving'
 
-    let sceneList = [Disco, Boxing, Watering]
+    let sceneList = [Disco, Boxing, Watering, Driving]
     let sceneName = ""
 
     const sceneChangeHandler = (e:CustomEvent) => {
