@@ -3,7 +3,7 @@ import type Item from '$class/Item'
 
 function translate(mvMatrix:mat4, item:Item){
 
-    mat4.translate(mvMatrix, mvMatrix, item.location.coordinate)
+    mat4.translate(mvMatrix, mvMatrix, item.location.position)
     return mvMatrix
 }
 

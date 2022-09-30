@@ -1,26 +1,26 @@
 <script lang="ts">
-    import WebGL from '$class/WebGL'
     import { onMount } from 'svelte'
-    import { initWebGLStore } from '$store/WebGLStore'
-    import { initModelStoreList } from '$store/ModelStore'
-    import { initShaderStoreList } from '$store/ShaderStore'
+
+    import CanvasDB from '$class/Canvas/CanvasDB'
+    import ModelDB from '$class/Model/ModelDB'
+    import ShaderDB from '$class/Shader/ShaderDB'
+    import LightDB from '$class/Light/LightDB'
+    import ItemDB from '$class/Item/ItemDB'
     import nextFrame from './nextFrame'
 
     let canvas:HTMLCanvasElement
 
     onMount(() => {
 
-        let width:number = window.innerWidth
-        let height:number = window.innerHeight
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
 
-        canvas.width = width
-        canvas.height = height
+        CanvasDB.init(canvas)
+        ModelDB.init(CanvasDB.gl)
+        ShaderDB.init(CanvasDB.gl)
+        LightDB.init()
+        ItemDB.init(3)
 
-        let webgl = new WebGL(canvas)
-
-        initWebGLStore(webgl)
-        initModelStoreList()
-        initShaderStoreList()
         nextFrame()
     })
 </script>

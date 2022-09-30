@@ -15,8 +15,8 @@
 <style>
     button{
         background-color: var(--color);
-        width: 2rem;
-        height: 2rem;
+        width: 1.75rem;
+        height: 1.75rem;
         cursor: pointer;
     }
 </style>

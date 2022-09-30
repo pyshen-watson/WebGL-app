@@ -1,10 +1,10 @@
 <script lang="ts">
     import LightBlock from "./LightBlock.svelte"
-    import { LightStoreList } from "$store/LightStore"
+    import LightDB from "$class/Light/LightDB"
 </script>
 
 <div>
-    {#each LightStoreList as store}
+    {#each LightDB.db as store}
         <LightBlock {store}/>
     {/each}
 </div>
@@ -14,6 +14,5 @@
         height: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        padding: 1rem;
     }
 </style>

@@ -1,5 +1,5 @@
 import { mat4 } from 'gl-matrix'
-import type Item from '$class/Item'
+import type Item from '$class/Item/Item'
 
 function shear(mvMatrix:mat4, item:Item){
 

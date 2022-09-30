@@ -1,11 +1,10 @@
 <script lang="ts">
-    import type { Vec3 } from "$utils/Type"
     import { createEventDispatcher } from 'svelte'
 
     export let title: string
     export let value: number
-    export let range: Vec3
-    export let displayValue:boolean=false
+    export let range: number[]
+    export let displayValue:boolean=true
     export let eventName:string = ""
 
     let min:number = range[0]

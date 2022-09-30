@@ -1,17 +1,17 @@
-import { get } from "svelte/store"
-import deepcopy from "$utils/Deepcopy"
+import { get, type Writable } from "svelte/store"
 import { HSL2RGB } from "$utils/Math"
-import type { LightStore } from "$utils/Type"
+import deepcopy from "$utils/Deepcopy"
+import type Light from "$class/Light/Light"
 
-function changing(store:LightStore){
+function changing(store: Writable<Light>){
 
     let light = get(store)
 
     // Initialization
-    if(light.motion.changing.on && !light.motion.changing.init){
+    if(light.effect.changing.on && !light.effect.changing.init){
 
         store.update(($store) => {
-            $store.motion.changing.origin = deepcopy($store.color)
+            $store.effect.changing.origin = deepcopy($store.color)
             return $store
         })
 
@@ -23,9 +23,10 @@ function changing(store:LightStore){
                 $store.color = HSL2RGB(counter/360, 1, 0.2)
                 counter = (counter + 10) % 360
 
-                if(!$store.motion.changing.on){
+                if(!$store.effect.changing.on){
                     clearInterval(process)
-                    $store.color = $store.motion.changing.origin
+                    if($store.effect.changing.init)
+                        $store.color = $store.effect.changing.origin
                 }
                 return $store
             })
@@ -34,7 +35,7 @@ function changing(store:LightStore){
 
 
     store.update(($store) => {
-        $store.motion.changing.init = $store.motion.changing.on
+        $store.effect.changing.init = $store.effect.changing.on
         return $store
     })
 }

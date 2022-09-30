@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { ItemStoreList } from "$store/ItemStore";
+    import ItemDB from "$class/Item/ItemDB"
     import TransformBlock from "./TransformBlock.svelte"
 </script>
 
 <div>
-    {#each ItemStoreList as store}
+    {#each ItemDB.db as store}
         <TransformBlock {store}/>
     {/each}
 </div>
@@ -14,6 +14,5 @@
         height: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        padding: 1rem;
     }
 </style>

@@ -1,11 +1,12 @@
 <script lang="ts">
     import ImageButton from '$components/ImageButton.svelte'
-    import Disco from './Disco'
-    import Boxing from './Boxing'
-    import Watering from './Watering'
-    import Driving from './Driving'
+    // import Disco from './Scenes/Disco'
+    // import Boxing from './Scenes/Boxing'
+    // import Watering from './Scenes/Watering'
+    // import Driving from './Scenes/Driving'
 
-    let sceneList = [Disco, Boxing, Watering, Driving]
+    // let sceneList = [Disco, Boxing, Watering, Driving]
+    let sceneList = []
     let sceneName = ""
 
     const sceneChangeHandler = (e:CustomEvent) => {
@@ -20,7 +21,7 @@
             src={scene.src}
             active={sceneName === scene.name}
             func={scene.func}
-            on:sceneChange={sceneChangeHandler}
+            on:buttonChange={sceneChangeHandler}
         />
     {/each}
 
@@ -30,7 +31,6 @@
     .main{
         display: grid;
         box-sizing: border-box;
-        padding: 1rem;
         grid-template-columns: repeat(5, 1fr);
         gap: 1rem 1rem;
     }

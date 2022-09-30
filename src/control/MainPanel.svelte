@@ -1,20 +1,16 @@
 <script lang="ts">
-    import Navbar from './Navbar/Navbar.svelte'
+    import TabBar from '$components/TabBar.svelte'
+    import PageTabName from './PageTabName'
+
     import ItemPage from './Page/ItemPage/ItemPage.svelte'
     import TransformPage from './Page/TransformPage/TransformPage.svelte'
     import LightPage from './Page/LightPage/LightPage.svelte'
-    import MotionPage from './Page/MotionPage/MotionPage.svelte'
     import ScenePage from './Page/ScenePage/ScenePage.svelte'
     import InfoPage from './Page/InfoPage/InfoPage.svelte'
     import AboutPage from './Page/AboutPage/AboutPage.svelte'
 
-    let menuOpen:boolean = true
-
-    let selectID:number = 4
-
-    const tabClickHandler = (e:CustomEvent) => {
-        selectID = e.detail
-    }
+    let menuOpen:boolean = false
+    let nameActive: PageTabName
 
 </script>
 
@@ -29,21 +25,27 @@
     </button>
 
     <div class="panel">
-        <Navbar {selectID} on:tabClick={tabClickHandler}/>
-        {#if selectID === 0}
+
+        <TabBar bind:nameActive={nameActive} nameList={Object.values(PageTabName)} />
+
+        {#if nameActive === PageTabName.Item}
             <ItemPage/>
-        {:else if selectID === 1}
+
+        {:else if nameActive === PageTabName.Transform}
             <TransformPage/>
-        {:else if selectID === 2}
+
+        {:else if nameActive === PageTabName.Light}
             <LightPage/>
-        {:else if selectID === 3}
-            <MotionPage/>
-        {:else if selectID === 4}
+
+        {:else if nameActive === PageTabName.Scene}
             <ScenePage/>
-        {:else if selectID === 5}
+
+        {:else if nameActive === PageTabName.Info}
             <InfoPage/>
-        {:else if selectID === 6}
+
+        {:else if nameActive === PageTabName.About}
             <AboutPage/>
+
         {/if}
     </div>
 
@@ -66,7 +68,7 @@
             background-color: lightgray;
             border: none;
             width: 100%;
-            padding: 0.7rem 0rem;
+            height: 7.5vh;
             font-size: 1.5rem;
             cursor: pointer;
         }

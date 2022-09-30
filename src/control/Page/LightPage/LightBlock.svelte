@@ -1,27 +1,44 @@
 <script lang="ts">
-    import type { LightStore } from '$utils/Type'
-    import LocationBlock from './LocationBlock.svelte'
-    import ColorBlock from './ColorBlock.svelte'
-    import SelectionBlock from "./SelectionBlock.svelte"
+    import TabBar from "$components/TabBar.svelte"
+    import LightTabName from "./LightTabName"
 
-    export let store: LightStore
+    import LocationBlock from './LightBlocks/LocationBlock.svelte'
+    import ColorBlock from './LightBlocks/ColorBlock.svelte'
+    import MotionBlock from './LightBlocks/MotionBlock.svelte'
+
+    import type { Writable } from "svelte/store"
+    import type Light from "$class/Light/Light"
+
+    export let store: Writable<Light>
+    let nameActive = LightTabName.Color
 </script>
 
-<div>
-    <LocationBlock {store}/>
-    <ColorBlock {store}/>
-    <SelectionBlock {store}/>
+<div class="main">
+
+    <TabBar nameList={Object.keys(LightTabName)} bind:nameActive={nameActive}/>
+
+    <div class="block">
+        {#if nameActive === LightTabName.Color}
+            <ColorBlock {store}/>
+
+        {:else if nameActive === LightTabName.Location}
+            <LocationBlock {store}/>
+
+        {:else if nameActive === LightTabName.Motion}
+            <MotionBlock {store}/>
+
+        {/if}
+    </div>
+
 </div>
 
 <style lang="scss">
-    div{
-        box-sizing: border-box;
+    .main{
         width: 100%;
-        height: 70%;
-        padding: 1rem;
         border-right: 2px solid rgba(gray, 0.3);
 
-        display: grid;
+        .block{
+            padding: 4rem 2rem 2rem 2rem;
+        }
     }
-
 </style>

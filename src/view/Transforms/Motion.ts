@@ -1,7 +1,7 @@
 import { mat4 } from 'gl-matrix'
 import { getRadNow } from '$utils/TimeTools'
-import type Item from '$class/Item'
-import type ItemMotion from '$class/ItemMotion'
+import type Item from '$class/Item/Item'
+import type { Motion } from '$class/Item/Transforms/Motion'
 
 const createIdentityMatrix = () => {
     let matrix = mat4.create()
@@ -13,8 +13,7 @@ function motion(mvMatrix:mat4, item:Item){
 
     for(let attr in item.motion){
 
-        let motion: ItemMotion = item.motion[attr]
-
+        let motion:Motion = item.motion[attr]
         if(!motion.on)
             continue
 

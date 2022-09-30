@@ -1,0 +1,30 @@
+<script lang="ts">
+    import ShaderName from "$class/Shader/ShaderName"
+    import ImageButton from "$components/ImageButton.svelte"
+    import type { Writable } from "svelte/store"
+    import type Item from "$class/Item/Item"
+
+    export let store: Writable<Item>
+</script>
+
+<div class="main">
+
+    {#each Object.values(ShaderName) as name}
+        <ImageButton
+            name={name}
+            src={`src/asset/image/shader/${name}.png`}
+            active={name == $store.shaderName}
+            func={() => {$store.shaderName = name}}
+            caption={name}
+        />
+    {/each}
+
+</div>
+
+<style lang="scss">
+    .main{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem 1rem;
+    }
+</style>

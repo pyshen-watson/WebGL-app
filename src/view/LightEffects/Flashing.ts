@@ -1,30 +1,31 @@
-import { get } from "svelte/store"
-import type { LightStore } from "$utils/Type"
+import { get, type Writable } from "svelte/store"
 import deepcopy from "$utils/Deepcopy"
+import type Light from "$class/Light/Light"
 
 
-function onLight(store: LightStore){
+function onLight(store: Writable<Light>){
     store.update(($store) => {
         $store.color.forEach((item, index, array) => {array[index] = item*3})
         return $store
     })
 }
-function offLight(store: LightStore){
+
+function offLight(store: Writable<Light>){
     store.update(($store) => {
         $store.color.forEach((item, index, array) => {array[index] = item/3})
         return $store
     })
 }
 
-function flashing(store:LightStore){
+function flashing(store:Writable<Light>){
 
     let light = get(store)
 
     // Initialization
-    if(light.motion.flashing.on && !light.motion.flashing.init){
+    if(light.effect.flashing.on && !light.effect.flashing.init){
 
         store.update(($store) => {
-            $store.motion.flashing.origin = deepcopy(light.color)
+            $store.effect.flashing.origin = deepcopy(light.color)
             return $store
         })
 
@@ -36,9 +37,10 @@ function flashing(store:LightStore){
 
             store.update(($store) => {
 
-                if(!$store.motion.flashing.on){
+                if(!$store.effect.flashing.on){
                     clearInterval(process)
-                    $store.color = $store.motion.flashing.origin
+                    if($store.effect.flashing.init)
+                        $store.color = $store.effect.flashing.origin
                 }
                 return $store
             })
@@ -47,7 +49,7 @@ function flashing(store:LightStore){
     }
 
     store.update(($store) => {
-        $store.motion.flashing.init = $store.motion.flashing.on
+        $store.effect.flashing.init = $store.effect.flashing.on
         return $store
     })
 

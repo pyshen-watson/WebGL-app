@@ -1,24 +1,23 @@
 import { mat4 } from 'gl-matrix'
-import { get } from 'svelte/store'
-import { degToRad } from '$utils/Math'
+import { Deg2Rad } from '$utils/Math'
 import { getNow } from '$utils/TimeTools'
-import type { ItemStore } from '$utils/Type'
-import deepcopy from '$utils/Deepcopy'
+import type Item from '$class/Item/Item'
 
-function rotate(mvMatrix:mat4, itemStore:ItemStore){
+function rotate(mvMatrix:mat4, item:Item){
 
-    let item = get(itemStore)
+    mat4.rotate(mvMatrix, mvMatrix, Deg2Rad(item.rotation.degree_control[0]), [1,0,0])
+    mat4.rotate(mvMatrix, mvMatrix, Deg2Rad(item.rotation.degree_control[1]), [0,1,0])
+    mat4.rotate(mvMatrix, mvMatrix, Deg2Rad(item.rotation.degree_control[2]), [0,0,1])
 
     if(item.rotation.auto){
-
         item.rotation.tick(getNow(), item.motion.crazy.on)
-        mat4.rotate(mvMatrix, mvMatrix, degToRad(item.rotation.lastAngle), item.rotation.direction)
+        mat4.rotate(mvMatrix, mvMatrix, Deg2Rad(item.rotation.lastAngle), [0,1,0])
     }
 
-    let radian = item.rotation.radian
-    mat4.rotate(mvMatrix, mvMatrix, radian[0], [1,0,0])
-    mat4.rotate(mvMatrix, mvMatrix, radian[1], [0,1,0])
-    mat4.rotate(mvMatrix, mvMatrix, radian[2], [0,0,1])
+    mat4.rotate(mvMatrix, mvMatrix, Deg2Rad(item.rotation.degree_model[0]), [1,0,0])
+    mat4.rotate(mvMatrix, mvMatrix, Deg2Rad(item.rotation.degree_model[1]), [0,1,0])
+    mat4.rotate(mvMatrix, mvMatrix, Deg2Rad(item.rotation.degree_model[2]), [0,0,1])
+
 
     return mvMatrix
 }
