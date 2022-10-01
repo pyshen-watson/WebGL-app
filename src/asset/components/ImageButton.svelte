@@ -1,21 +1,21 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte'
 
-    export let name:string
+    export let title:string
     export let src:string
     export let active:boolean
-    export let func
+    export let func:any
     export let caption:string = ""
 
     const dispatcher = createEventDispatcher()
     const clickhandler = () => {
-        dispatcher('buttonChange', name)
+        dispatcher('buttonChange', title)
         func()
     }
 </script>
 
 <div class="main" class:active="{active}" on:click={clickhandler}>
-    <img type="image" alt={name} src={src} />
+    <img type="image" alt={title} src={src} />
     <div class="caption"> {caption} </div>
 </div>
 

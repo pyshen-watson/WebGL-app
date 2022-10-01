@@ -1,13 +1,13 @@
 import { mat4 } from 'gl-matrix'
 
-import CanvasDB from '$class/Canvas/CanvasDB'
-import ModelDB from '$class/Model/ModelDB'
-import ShaderDB from '$class/Shader/ShaderDB'
-import LightDB from '$class/Light/LightDB'
-import ItemDB from '$class/Item/ItemDB'
+import CanvasDB from '$canvas/CanvasDB'
+import ModelDB from '$model/ModelDB'
+import ShaderDB from '$shader/ShaderDB'
+import LightDB from '$light/LightDB'
+import ItemDB from '$item/ItemDB'
 
-import transfrom from './Transforms/Transform'
-import applyLightEffects from './LightEffects/LightEffect'
+import applyTransfroms from '$utils/Transforms/ApplyTransforms'
+import applyLightEffects from '$utils/LightEffects/LightEffect'
 
 
 let mvMatrix = mat4.create() // perspective matrix
@@ -40,8 +40,7 @@ function drawScene(){
         let model = ModelDB.getInstance(item.modelName)
 
         mat4.identity(mvMatrix)
-        mvMatrix = transfrom(mvMatrix, item)
-
+        applyTransfroms(mvMatrix, item)
 
         gl.useProgram(shader.program)
         gl.uniformMatrix4fv(shader.pMatrix, false, pMatrix)
@@ -58,8 +57,8 @@ function drawScene(){
 
         for(let lightID=0; lightID<3; lightID++){
             let light = LightDB.getInstance(lightID)
-            gl.uniform3fv(shader.lightColor[lightID], light.color)
-            gl.uniform4fv(shader.lightPosition[lightID], light.location.concat([1.0]))
+            gl.uniform3fv(shader.lightColor[lightID], light.color.level)
+            gl.uniform4fv(shader.lightPosition[lightID], light.location.translate)
         }
 
         gl.uniform1f(shader.Ka, item.material.Ka)

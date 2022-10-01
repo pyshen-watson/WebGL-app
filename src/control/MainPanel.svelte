@@ -2,12 +2,12 @@
     import TabBar from '$components/TabBar.svelte'
     import PageTabName from './PageTabName'
 
-    import ItemPage from './Page/ItemPage/ItemPage.svelte'
-    import TransformPage from './Page/TransformPage/TransformPage.svelte'
-    import LightPage from './Page/LightPage/LightPage.svelte'
-    import ScenePage from './Page/ScenePage/ScenePage.svelte'
-    import InfoPage from './Page/InfoPage/InfoPage.svelte'
-    import AboutPage from './Page/AboutPage/AboutPage.svelte'
+    import ItemPage from './ItemPage/ItemPage.svelte'
+    import TransformPage from './TransformPage/TransformPage.svelte'
+    import LightPage from './LightPage/LightPage.svelte'
+    // import ScenePage from './ScenePage/ScenePage.svelte'
+    import InfoPage from './InfoPage/InfoPage.svelte'
+    import AboutPage from './AboutPage/AboutPage.svelte'
 
     let menuOpen:boolean = false
     let nameActive: PageTabName
@@ -26,7 +26,7 @@
 
     <div class="panel">
 
-        <TabBar bind:nameActive={nameActive} nameList={Object.values(PageTabName)} />
+        <TabBar bind:titleActive={nameActive} titleList={Object.values(PageTabName)} />
 
         {#if nameActive === PageTabName.Item}
             <ItemPage/>
@@ -38,7 +38,8 @@
             <LightPage/>
 
         {:else if nameActive === PageTabName.Scene}
-            <ScenePage/>
+            <LightPage/>
+            <!-- <ScenePage/> -->
 
         {:else if nameActive === PageTabName.Info}
             <InfoPage/>

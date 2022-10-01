@@ -1,16 +1,16 @@
 <script lang="ts">
     import Tab from "./Tab.svelte"
 
-    export let nameList:string[]
-    export let nameActive:string
+    export let titleList:string[]
+    export let titleActive:string
 </script>
 
 <div>
-    {#each nameList as name}
+    {#each titleList as name}
         <Tab
             title={name}
-            active={nameActive === name}
-            on:tabClick={(e) => {nameActive = e.detail}}
+            active={titleActive === name}
+            on:tabClick={(e) => {titleActive = e.detail}}
         />
     {/each}
 </div>

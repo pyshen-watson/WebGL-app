@@ -20,8 +20,8 @@
         color: white;
         text-align: center;
         width: 100%;
-        height: 5vh;
-        line-height: 5vh;
+        height: 7.5vh;
+        line-height: 7.5vh;
         cursor: pointer;
         &:hover{
             font-weight: 700;
