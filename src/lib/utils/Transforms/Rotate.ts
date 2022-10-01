@@ -3,22 +3,28 @@ import type Item from 'src/lib/item/Item'
 
 const toRadian = glMatrix.toRadian
 
-function rotateXYZ(mvMatrix: mat4, degree: vec3){
-    mat4.rotateX(mvMatrix, mvMatrix, toRadian(degree[0]))
-    mat4.rotateY(mvMatrix, mvMatrix, toRadian(degree[1]))
-    mat4.rotateZ(mvMatrix, mvMatrix, toRadian(degree[2]))
+function index2axis(index: number){
+    let axis = vec3.fromValues(0,0,0)
+    axis[index] = 1
+    return axis
 }
 
 function rotate(mvMatrix:mat4, item:Item){
 
-    rotateXYZ(mvMatrix, item.rotation.degree_control)
+    let degree = item.rotation.degree
 
-    if(item.rotation.auto){
-        item.rotation.tick(item.motion.crazy.on)
-        mat4.rotateY(mvMatrix, mvMatrix, toRadian(item.rotation.lastAngle))
+    for(let i=0; i<3; i++){
+        let radian = toRadian(degree[i])
+        let axis = index2axis(item.rotation.axis[i])
+        mat4.rotate(mvMatrix, mvMatrix, radian, axis)
     }
 
-    rotateXYZ(mvMatrix, item.rotation.degree_model)
+    if(item.rotation.auto || item.motion.crazy.on){
+        item.rotation.tick(item.motion.crazy.on)
+        let radian = toRadian(item.rotation.lastAngle)
+        let axis = index2axis(item.rotation.axis[1])
+        mat4.rotate(mvMatrix, mvMatrix, radian, axis)
+    }
 
 }
 

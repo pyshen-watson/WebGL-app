@@ -23,7 +23,6 @@
       "$shader/*": ["src/lib/shader/*"],
       "$utils/*": ["src/lib/utils/*"],
       "$asset/*": ["src/asset/*"],
-      "$image/*": ["src/asset/image/*"],
       "$components/*": ["src/asset/components/*"],
     }
   },

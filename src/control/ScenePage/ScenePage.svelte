@@ -1,12 +1,12 @@
 <script lang="ts">
     import ImageButton from '$components/ImageButton.svelte'
     // import Disco from './Scenes/Disco'
-    // import Boxing from './Scenes/Boxing'
+    import Boxing from '$utils/Scenes/Boxing'
     // import Watering from './Scenes/Watering'
     // import Driving from './Scenes/Driving'
 
+    let sceneList = [ Boxing ]
     // let sceneList = [Disco, Boxing, Watering, Driving]
-    let sceneList = []
     let sceneName = ""
 
     const sceneChangeHandler = (e:CustomEvent) => {

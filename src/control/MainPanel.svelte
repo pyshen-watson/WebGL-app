@@ -5,7 +5,7 @@
     import ItemPage from './ItemPage/ItemPage.svelte'
     import TransformPage from './TransformPage/TransformPage.svelte'
     import LightPage from './LightPage/LightPage.svelte'
-    // import ScenePage from './ScenePage/ScenePage.svelte'
+    import ScenePage from './ScenePage/ScenePage.svelte'
     import InfoPage from './InfoPage/InfoPage.svelte'
     import AboutPage from './AboutPage/AboutPage.svelte'
 
@@ -38,8 +38,7 @@
             <LightPage/>
 
         {:else if nameActive === PageTabName.Scene}
-            <LightPage/>
-            <!-- <ScenePage/> -->
+            <ScenePage/>
 
         {:else if nameActive === PageTabName.Info}
             <InfoPage/>

@@ -32,12 +32,10 @@ function drawScene(){
     for(let id=0; id<3; id++){
 
         let item = ItemDB.getInstance(id)
-
-        // This case happens when model name is 'Hide' or the model is still loading
-        if( !ModelDB.getStore(item.modelName) ) {continue}
-
         let shader = ShaderDB.getInstance(item.shaderName)
         let model = ModelDB.getInstance(item.modelName)
+
+        if(!model) { continue }
 
         mat4.identity(mvMatrix)
         applyTransfroms(mvMatrix, item)
@@ -45,6 +43,8 @@ function drawScene(){
         gl.useProgram(shader.program)
         gl.uniformMatrix4fv(shader.pMatrix, false, pMatrix)
         gl.uniformMatrix4fv(shader.mvMatrix, false, mvMatrix)
+
+
 
         gl.bindBuffer(gl.ARRAY_BUFFER, model.vertexPositionsBuffer)
         gl.vertexAttribPointer(shader.vertexPositionAttribute, 3, gl.FLOAT, false, 0, 0)

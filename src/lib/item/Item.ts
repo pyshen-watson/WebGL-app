@@ -44,19 +44,27 @@ class Item{
         return writable(this)
     }
 
-    changeModel(modelName:ModelName){
+    changeModel(modelName?:ModelName){
+
+        if(!modelName) {
+            this.modelName = null
+            return
+        }
 
         this.modelName = modelName
-
-        let modelStore = ModelDB.getStore(modelName)
-        if (!modelStore) { return } // Invalid modelName such as 'Hide'
-
         let model = ModelDB.getInstance(modelName)
 
         this.rotation.auto = false
+        this.rotation.axis = Tool.deepcopy(model.axis)
         this.scaling.ratio_model = Tool.deepcopy(model.ratio)
         vec3.scaleAndAdd(this.location.shift_model, model.shift_base, model.shift_grow, this.index)
         vec3.scaleAndAdd(this.rotation.degree_model, model.degree_base, model.degree_grow, this.index)
+
+    }
+
+    reset(){
+        this.material.reset()
+        this.motion.reset()
     }
 }
 

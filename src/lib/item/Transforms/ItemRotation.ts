@@ -5,6 +5,7 @@ class Rotation{
 
     degree_model: vec3
     degree_control: vec3
+    axis: vec3
     auto: boolean
     speed: number
     lastAngle: number
@@ -14,17 +15,23 @@ class Rotation{
 
         this.degree_model = vec3.fromValues(0,0,0)
         this.degree_control = vec3.fromValues(0,0,0)
+        this.axis = [0,1,2]
         this.auto = true
         this.speed = 30
         this.lastAngle = 0
         this.lastTime = Time.getNow()
     }
 
+    get degree(){
+        let sum = vec3.create()
+        return vec3.add(sum, this.degree_control, this.degree_model)
+    }
+
     tick(isCrazy:boolean){
 
         let now = Time.getNow()
         this.lastAngle += this.speed * ((now - this.lastTime) / 1000)
-        
+
         if(!isCrazy)
             this.lastTime = now
     }

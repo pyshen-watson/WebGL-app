@@ -15,7 +15,6 @@ export default defineConfig({
       $utils: path.resolve('./src/lib/utils'),
 
       $asset: path.resolve('./src/asset/'),
-      $image: path.resolve('./src/asset/image'),
       $components: path.resolve('./src/asset/components'),
     }
   }

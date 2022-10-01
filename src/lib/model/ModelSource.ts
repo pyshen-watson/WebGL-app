@@ -7,6 +7,7 @@ class ModelSource {
     degree_base: vec3
     degree_grow: vec3
     ratio: vec3
+    axis: vec3
 
     vertexPositions: number[]
     vertexNormals: number[]
