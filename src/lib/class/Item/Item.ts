@@ -10,11 +10,13 @@ import ShaderName from "$class/Shader/ShaderName"
 import ModelDB from "$class/Model/ModelDB"
 import { get, writable } from "svelte/store"
 import deepcopy from "$utils/Deepcopy"
+import { linear } from "$utils/Math"
 
 const defaultShaderName = [ ShaderName.Flat, ShaderName.Gouraud, ShaderName.Phong]
 
 class Item{
 
+    index: number
     modelName: ModelName
     shaderName: ShaderName
     material: Material
@@ -28,6 +30,7 @@ class Item{
 
     constructor(index: number){
 
+        this.index = index
         this.modelName = ModelName.Teapot
         this.shaderName = defaultShaderName[index]
         this.material = new Material()
@@ -52,9 +55,12 @@ class Item{
         if (!modelStore) { return } // Invalid modelName such as 'Hide'
 
         let model = get(modelStore)
+        this.rotation.auto = false
+
+        this.location.shift_model = linear(model.shift_base, model.shift_grow, this.index)
+        this.rotation.degree_model = linear(model.degree_base, model.degree_grow, this.index)
         this.scaling.ratio_model = deepcopy(model.ratio)
-        this.rotation.degree_model = deepcopy(model.degree)
-        this.rotation.auto = model.autoRotate
+
     }
 }
 

@@ -5,6 +5,12 @@ export const newVec3 = (value:number=0) => {
     return newV
 }
 
+export const linear = (base:Vec3, grow:Vec3, times:number) => {
+    let result = newVec3()
+    result.forEach((_, i, arr) => {arr[i] = base[i] + grow[i] * times})
+    return result
+}
+
 export enum Direction{
 
     X = 'X',

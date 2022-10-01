@@ -1,5 +1,5 @@
 import { getNow } from '$utils/TimeTools'
-import { newVec3, type Vec3 } from '$utils/Math'
+import { newVec3 } from '$utils/Math'
 
 class Rotation{
 

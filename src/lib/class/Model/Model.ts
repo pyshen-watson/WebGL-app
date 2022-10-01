@@ -13,9 +13,11 @@ class Model extends ModelSource {
 
         super()
 
+        this.shift_base = src.shift_base
+        this.shift_grow = src.shift_grow
+        this.degree_base = src.degree_base
+        this.degree_grow = src.degree_grow
         this.ratio = src.ratio
-        this.degree = src.degree
-        this.autoRotate = src.autoRotate
 
         this.vertexPositions = src.vertexPositions
         this.vertexNormals = src.vertexNormals
