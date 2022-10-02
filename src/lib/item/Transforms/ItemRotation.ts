@@ -5,7 +5,6 @@ class Rotation{
 
     degree_model: vec3
     degree_control: vec3
-    axis: vec3
     auto: boolean
     speed: number
     lastAngle: number
@@ -15,7 +14,6 @@ class Rotation{
 
         this.degree_model = vec3.fromValues(0,0,0)
         this.degree_control = vec3.fromValues(0,0,0)
-        this.axis = [0,1,2]
         this.auto = true
         this.speed = 30
         this.lastAngle = 0

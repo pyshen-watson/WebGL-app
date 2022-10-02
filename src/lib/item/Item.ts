@@ -15,6 +15,7 @@ import Tool from "$utils/Tool"
 class Item{
 
     index: number
+    axisOrder: vec3
     modelName: ModelName
     shaderName: ShaderName
     material: ItemMaterial
@@ -28,6 +29,7 @@ class Item{
     constructor(index: number){
 
         this.index = index
+        this.axisOrder = vec3.fromValues(0,1,2)
         this.modelName = ModelName.Teapot
         this.shaderName = ShaderName.Flat
         this.material = new ItemMaterial()
@@ -55,11 +57,17 @@ class Item{
         let model = ModelDB.getInstance(modelName)
 
         this.rotation.auto = false
-        this.rotation.axis = Tool.deepcopy(model.axis)
+        this.axisOrder = Tool.deepcopy(model.axis)
         this.scaling.ratio_model = Tool.deepcopy(model.ratio)
         vec3.scaleAndAdd(this.location.shift_model, model.shift_base, model.shift_grow, this.index)
         vec3.scaleAndAdd(this.rotation.degree_model, model.degree_base, model.degree_grow, this.index)
 
+    }
+
+    getAxis(index: number){
+        let axis = vec3.fromValues(0,0,0)
+        axis[this.axisOrder[index]] = 1
+        return axis
     }
 
     reset(){

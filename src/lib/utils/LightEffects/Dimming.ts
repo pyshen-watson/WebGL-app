@@ -1,4 +1,3 @@
-import Tool from "$utils/Tool"
 import { get } from "svelte/store"
 import type { LightStore } from "$utils/Type"
 
