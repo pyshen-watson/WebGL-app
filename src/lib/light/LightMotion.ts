@@ -15,6 +15,10 @@ class Effect{
         this.init = false
         this.temp = vec3.fromValues(0,0,0)
     }
+
+    turnOn(){
+        this.on = true
+    }
 }
 
 class LightEffect{

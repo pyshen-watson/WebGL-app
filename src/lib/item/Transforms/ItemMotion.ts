@@ -5,10 +5,14 @@ export class Motion{
     func: Function
 
     constructor(index:number, func: Function){
-        
+
         this.on = false
         this.index = index
         this.func = func
+    }
+
+    turnOn(){
+        this.on = true
     }
 }
 

@@ -73,6 +73,11 @@ class Item{
     reset(){
         this.material.reset()
         this.motion.reset()
+        this.rotation.auto = false
+        this.location.shift_control = [0,0,0]
+        this.rotation.degree_control = [0,0,0]
+        this.scaling.ratio_control = [1,1,1]
+        this.shearing.degree = [0,0,0]
     }
 }
 
