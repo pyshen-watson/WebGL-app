@@ -71,7 +71,7 @@ function drawScene(){
         gl.uniform1f(shader.Ks, item.material.Ks)
         gl.uniform1f(shader.Shininess, item.material.Shininess)
 
-        gl.drawArrays(gl.TRIANGLES, 0, model.fragNumber)
+        gl.drawArrays(gl.TRIANGLES, 0, model.vertexNumber)
 
     }
 }

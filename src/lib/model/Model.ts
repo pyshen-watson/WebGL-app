@@ -8,7 +8,7 @@ class Model extends ModelSource {
     vertexPositionsBuffer?: WebGLBuffer
     vertexNormalsBuffer?: WebGLBuffer
     vertexColorsBuffer?: WebGLBuffer
-    fragNumber?:number
+    vertexNumber?:number
 
     constructor(gl: GL, src: Partial<Model>){
 
@@ -19,7 +19,7 @@ class Model extends ModelSource {
         this.vertexPositionsBuffer = this.dataToBuffer(this.vertexPositions)
         this.vertexNormalsBuffer = this.dataToBuffer(this.vertexNormals)
         this.vertexColorsBuffer = this.dataToBuffer(this.vertexColors)
-        this.fragNumber = this.vertexPositions.length / 3
+        this.vertexNumber = this.vertexPositions.length / 3
 
     }
 
