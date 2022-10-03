@@ -1,100 +1,57 @@
-import { webglStore } from 'src/lib/database/WebGLStore'
-import { ItemStoreList } from '$database/ItemDB'
-import { LightStoreList } from 'src/lib/database/LightStore'
+import CanvasDB from '$canvas/CanvasDB'
+import ItemDB from '$item/ItemDB'
+import LightDB from '$light/LightDB'
+import ModelName from '$model/ModelName'
+import ShaderName from '$shader/ShaderName'
 
-import { ModelName, ShaderName } from '$utils/Name'
-
-import Material from '$class/Material'
 
 let scene = {
 
-    name: "Lake" ,
-    src: "src/asset/image/watering.png",
+    name: "Boxing" ,
+    src: "src/asset/image/scene/watering.png",
     func: () => {
 
-        ItemStoreList[0].update(($store) => {
+        const item0 = ItemDB.getInstance(0)
+        item0.reset()
+        item0.changeModel(ModelName.Teapot)
+        item0.shaderName = ShaderName.Phong
+        item0.material.Kd = 0.5
+        item0.location.shift_control = [30, 30, 0]
+        item0.rotation.degree_control = [0, -25, -45]
+        item0.scaling.ratio_control = [1.5, 1.5, 1.5]
 
-            $store.changeModel(ModelName.Teapot)
-            $store.shaderName = ShaderName.Gouraud
-            $store.material = new Material()
-
-            $store.location.shift_control = [25, 0, 0]
-            $store.rotation.degree = [0, 0, -45]
-            $store.rotation.auto = false
-            $store.scaling.ratio_control = [1.5, 1.5, 1.5]
-            $store.shearing.degree = [0,0,0]
-
-            $store.motion.reset()
-            $store.motion.dancing.on = true
-            $store.motion.jumping.on = true
-
-            return $store
-        })
-
-        ItemStoreList[1].update(($store) => {
-
-            $store.changeModel(ModelName.Plant)
-            $store.shaderName = ShaderName.Gouraud
-            $store.material = new Material()
-
-            $store.location.shift_control = [30, -50, 10]
-            $store.rotation.auto = false
-            $store.rotation.degree = [-90, 0, 0]
-            $store.scaling.ratio_control = [1, 1, 1]
-            $store.shearing.degree = [0, 0, 0]
-
-            $store.motion.reset()
-
-            return $store
-        })
-
-        ItemStoreList[2].update(($store) => {
-
-            $store.changeModel(ModelName.Teapot)
-            $store.shaderName = ShaderName.Gouraud
-            $store.material = new Material()
-
-            $store.location.shift_control = [-15, 0, 0]
-            $store.rotation.degree = [0, -200, -45]
-            $store.rotation.auto = false
-            $store.scaling.ratio_control = [1.5, 1.5, 1.5]
-            $store.shearing.degree = [0,0,0]
-
-            $store.motion.reset()
-            $store.motion.dancing.on = true
-            $store.motion.jumping.on = true
+        const item1 = ItemDB.getInstance(1)
+        item1.reset()
+        item1.changeModel(ModelName.Moai)
+        item1.shaderName = ShaderName.Gouraud
+        item1.material.Shininess = -1
+        item1.location.shift_control = [2, 0, 0]
+        item1.rotation.degree_control = [0, 0, -16]
+        item1.rotation.auto = true
+        item1.rotation.speed = 3000
+        item1.scaling.ratio_control = [0.2, 1, 0.2]
 
 
-            return $store
-        })
+        const item2 = ItemDB.getInstance(2)
+        item2.reset()
+        item2.changeModel(ModelName.Plant)
+        item2.shaderName = ShaderName.Gouraud
+        item2.material.Ka = 1.5
+        item2.location.shift_control = [-75, -45, 0]
+        item2.rotation.degree_control = [0, -30, 0]
+        item2.scaling.ratio_control = [2, 2, 2]
 
-        LightStoreList[0].update(($store) => {
+        const light0 = LightDB.getInstance(0)
+        light0.reset()
 
-            $store.reset()
-            $store.color = [8,2,0]
-            return $store
-        })
+        const light1 = LightDB.getInstance(1)
+        light1.reset()
+        light1.color.level = [0, 0, 0.5]
 
-        LightStoreList[1].update(($store) => {
+        const light2 = LightDB.getInstance(2)
+        light2.reset()
 
-            $store.reset()
-            $store.color = [0,15,15]
-            $store.location.shift_control = [0,0,-150]
-            return $store
-        })
-
-        LightStoreList[2].update(($store) => {
-
-            $store.reset()
-            $store.color = [8,2,0]
-            $store.location.shift_control = [0,0,-150]
-            return $store
-        })
-
-        webglStore.update(($store) => {
-            $store.setColor(0.3, 0.5, 0.3, 1)
-            return $store
-        })
+        CanvasDB.setColor(0.3, 0.5, 0.3, 1)
     }
 
 }

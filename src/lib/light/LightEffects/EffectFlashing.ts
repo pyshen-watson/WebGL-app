@@ -10,9 +10,15 @@ class EffectFlashing extends Effect{
     constructor(light: Light){
         super(light)
         this.counter = 0
-        this.period = 10
+        this.period = 16
     }
 
+    turnOn(){
+        super.turnOn()
+        if(!this.init){
+            this.counter = 0
+        }
+    }
 
     update(){
         this.counter += 1

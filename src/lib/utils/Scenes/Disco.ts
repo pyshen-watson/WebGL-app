@@ -15,6 +15,7 @@ let scene = {
         item0.reset()
         item0.changeModel(ModelName.Moai)
         item0.shaderName = ShaderName.Gouraud
+
         item0.location.shift_control = [50, 0, 0]
         item0.motion.vibing.turnOn()
 
@@ -22,17 +23,19 @@ let scene = {
         item1.reset()
         item1.changeModel(ModelName.Teapot)
         item1.shaderName = ShaderName.Flat
+        item1.material.Shininess = 0.1
+
         item1.location.shift_control = [0, 80, 0]
         item1.rotation.auto = true
         item1.rotation.speed = 450
         item1.scaling.ratio_control = [3, 6, 3]
         item1.shearing.degree = [0, 0, -5]
-        item1.material.Shininess = 0.1
 
         const item2 = ItemDB.getInstance(2)
         item2.reset()
         item2.changeModel(ModelName.Kangaroo)
         item2.shaderName = ShaderName.Gouraud
+        
         item2.location.shift_control = [-50, 0, 0]
         item2.motion.jumping.turnOn()
 
@@ -44,7 +47,7 @@ let scene = {
         light1.reset()
         light1.location.shift = [0, 0, -60]
         light1.effect.flashing.turnOn()
-        // light1.effect.changing.turnOn()
+        light1.effect.changing.turnOn()
 
         const light2 = LightDB.getInstance(2)
         light2.reset()
