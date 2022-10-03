@@ -41,19 +41,15 @@
 
             display: grid;
             grid-template-columns: 1fr 1fr;
-            row-gap: 3rem;
-            column-gap: 4rem;
+            row-gap: 10%;
+            column-gap: 10%;
         }
 
         .reset{
             display: flex;
             width: 100%;
             justify-content: center;
-            padding: 3rem 0;
-
-            *{
-                width: 100%;
-            }
+            padding-top: 30%;
         }
     }
 

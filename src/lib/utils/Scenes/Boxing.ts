@@ -24,6 +24,7 @@ let scene = {
         item0.motion.shaking.turnOn()
         item0.motion.jumping.turnOn()
 
+
         const item1 = ItemDB.getInstance(1)
         item1.reset()
         item1.changeModel(ModelName.Plant)
@@ -44,7 +45,7 @@ let scene = {
         item2.shaderName = ShaderName.Gouraud
         item2.material.Ka = 0.3
         item2.material.Kd = 0.3
-        
+
         item2.location.shift_control = [-55, 0, 0]
         item2.rotation.degree_control = [0, -30, 0]
         item2.motion.vibing.turnOn()
@@ -65,7 +66,7 @@ let scene = {
         light2.color.level = [1, 0, 0]
 
 
-        CanvasDB.setColor(0.2, 0, 0, 1)
+        CanvasDB.setColor(0.4, 0.2, 0.2, 1)
     }
 
 }

@@ -7,7 +7,7 @@ import ShaderName from '$shader/ShaderName'
 
 let scene = {
 
-    name: "Boxing" ,
+    name: "Watering" ,
     src: "src/asset/image/scene/watering.png",
     func: () => {
 
@@ -16,15 +16,18 @@ let scene = {
         item0.changeModel(ModelName.Teapot)
         item0.shaderName = ShaderName.Phong
         item0.material.Kd = 0.5
+
         item0.location.shift_control = [30, 30, 0]
         item0.rotation.degree_control = [0, -25, -45]
         item0.scaling.ratio_control = [1.5, 1.5, 1.5]
+
 
         const item1 = ItemDB.getInstance(1)
         item1.reset()
         item1.changeModel(ModelName.Moai)
         item1.shaderName = ShaderName.Gouraud
         item1.material.Shininess = -1
+
         item1.location.shift_control = [2, 0, 0]
         item1.rotation.degree_control = [0, 0, -16]
         item1.rotation.auto = true
@@ -37,9 +40,11 @@ let scene = {
         item2.changeModel(ModelName.Plant)
         item2.shaderName = ShaderName.Gouraud
         item2.material.Ka = 1.5
+
         item2.location.shift_control = [-75, -45, 0]
         item2.rotation.degree_control = [0, -30, 0]
         item2.scaling.ratio_control = [2, 2, 2]
+        
 
         const light0 = LightDB.getInstance(0)
         light0.reset()

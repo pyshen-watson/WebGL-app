@@ -3,13 +3,12 @@
     import Disco from '$utils/Scenes/Disco'
     import Boxing from '$utils/Scenes/Boxing'
     import Watering from '$utils/Scenes/Watering'
-
-    // import Watering from './Scenes/Watering'
-    // import Driving from './Scenes/Driving'
+    import Driving from '$utils/Scenes/Driving'
+    import Wall from '$utils/Scenes/Wall'
 
     export let menuOpen:Boolean
 
-    let sceneList = [ Boxing, Disco, Watering ]
+    let sceneList = [ Boxing, Disco, Watering, Driving, Wall ]
     let sceneName = ""
 
     const sceneChangeHandler = (e:CustomEvent) => {
@@ -36,6 +35,6 @@
         display: grid;
         box-sizing: border-box;
         grid-template-columns: repeat(5, 1fr);
-        gap: 1rem 1rem;
+        padding-top: 10%;
     }
 </style>

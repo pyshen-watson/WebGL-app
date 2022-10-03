@@ -14,7 +14,7 @@
         dimming ? $store.effect.dimming.turnOn() : $store.effect.dimming.turnOff()
         moving ? $store.effect.moving.turnOn() : $store.effect.moving.turnOff()
     }
-    
+
 </script>
 
 <div class="main">
@@ -38,7 +38,7 @@
 
             display: grid;
             grid-template-columns: 1fr;
-            row-gap: 3rem;
+            row-gap: 10%;
 
         }
 

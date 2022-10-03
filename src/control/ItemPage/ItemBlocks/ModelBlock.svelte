@@ -33,7 +33,7 @@
 
     <div class="button">
         <Switch
-            title="Hide"
+            title="Hide Model"
             bind:value={hidden}
         />
     </div>
