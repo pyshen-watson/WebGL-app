@@ -1,5 +1,8 @@
-import { vec3 } from 'gl-matrix'
+import { mat4, vec3, glMatrix } from 'gl-matrix'
 import Time from '$utils/Time'
+import type Item from '$item/Item'
+
+const toRadian = glMatrix.toRadian
 
 class Rotation{
 
@@ -32,6 +35,23 @@ class Rotation{
 
         if(!isCrazy)
             this.lastTime = now
+    }
+
+    apply(mvMatrix: mat4, item: Item){
+
+        for(let i=0; i<3; i++){
+            let radian = toRadian(this.degree[i])
+            let axis = item.getAxis(i)
+            mat4.rotate(mvMatrix, mvMatrix, radian, axis)
+        }
+
+        if(this.auto || item.motion.crazy.on){
+            this.tick(item.motion.crazy.on)
+            let radian = toRadian(this.lastAngle)
+            let axis = item.getAxis(1)
+            mat4.rotate(mvMatrix, mvMatrix, radian, axis)
+        }
+
     }
 
 }

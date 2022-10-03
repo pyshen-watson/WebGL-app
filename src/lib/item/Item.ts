@@ -9,7 +9,7 @@ import ModelName from "$model/ModelName"
 import ShaderName from "$shader/ShaderName"
 import ModelDB from "$model/ModelDB"
 import { writable } from "svelte/store"
-import { vec3 } from "gl-matrix"
+import { mat4, vec3 } from "gl-matrix"
 import Tool from "$utils/Tool"
 
 class Item{
@@ -44,6 +44,14 @@ class Item{
 
     toStore(){
         return writable(this)
+    }
+
+    apply(mvMatrix: mat4){
+        this.location.apply(mvMatrix)
+        this.rotation.apply(mvMatrix, this)
+        this.scaling.apply(mvMatrix, this)
+        this.shearing.apply(mvMatrix)
+        this.motion.apply(mvMatrix)
     }
 
     changeModel(modelName?:ModelName){

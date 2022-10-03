@@ -1,6 +1,6 @@
 <script lang="ts">
     import Bar from "$components/Bar.svelte"
-    import ColorSquare from "$components/ColorSquare.svelte"
+    import ColorSquare from "./ColorSquare.svelte"
     import Color from '$utils/Color'
     import type { LightStore } from "$utils/Type"
 

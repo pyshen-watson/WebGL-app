@@ -1,4 +1,4 @@
-import { vec3 } from 'gl-matrix'
+import { vec3, mat4 } from 'gl-matrix'
 
 class ItemLocation{
 
@@ -12,11 +12,15 @@ class ItemLocation{
         this.shift_control = vec3.fromValues(0,0,0)
     }
 
-    get translate():vec3{
+    get translate(){
         let out = vec3.create()
         vec3.add(out, this.shift_model, this.shift_control)
         vec3.add(out, this.anchor, out)
         return out
+    }
+
+    apply(mvMatrix: mat4){
+        mat4.translate(mvMatrix, mvMatrix, this.translate)
     }
 
 }

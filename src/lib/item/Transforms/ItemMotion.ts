@@ -1,3 +1,6 @@
+import Time from '$utils/Time'
+import { mat4 } from "gl-matrix"
+
 export class Motion{
 
     on: boolean
@@ -36,6 +39,23 @@ class ItemMotion{
         this.running.on = false
         this.backing.on = false
         this.swinging.on = false
+    }
+
+    apply(mvMatrix: mat4){
+
+        for(let attr in this){
+
+            let motion:Motion = this[attr]
+            if(!motion.on)
+                continue
+
+            let motionMatrix = mat4.create()
+            mat4.identity(motionMatrix)
+            let index:number = motion.index
+            let func:Function = motion.func
+            motionMatrix[index] = func(Time.getRadNow())
+            mat4.multiply(mvMatrix, motionMatrix, mvMatrix)
+        }
     }
 }
 

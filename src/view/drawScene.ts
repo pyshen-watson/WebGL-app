@@ -6,8 +6,6 @@ import ShaderDB from '$shader/ShaderDB'
 import LightDB from '$light/LightDB'
 import ItemDB from '$item/ItemDB'
 
-import applyTransfroms from '$utils/Transforms/ApplyTransforms'
-
 
 let mvMatrix = mat4.create() // perspective matrix
 let pMatrix = mat4.create() // model-view matrix
@@ -44,7 +42,7 @@ function drawScene(){
         if(!model) { continue }
 
         mat4.identity(mvMatrix)
-        applyTransfroms(mvMatrix, item)
+        item.apply(mvMatrix)
 
         gl.useProgram(shader.program)
         gl.uniformMatrix4fv(shader.pMatrix, false, pMatrix)
