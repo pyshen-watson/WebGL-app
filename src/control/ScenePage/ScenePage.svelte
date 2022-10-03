@@ -1,16 +1,23 @@
 <script lang="ts">
     import ImageButton from '$components/ImageButton.svelte'
-    // import Disco from './Scenes/Disco'
+    import Disco from '$utils/Scenes/Disco'
     import Boxing from '$utils/Scenes/Boxing'
+    import LightDB from '$light/LightDB';
+
     // import Watering from './Scenes/Watering'
     // import Driving from './Scenes/Driving'
 
-    let sceneList = [ Boxing ]
-    // let sceneList = [Disco, Boxing, Watering, Driving]
+    export let menuOpen:Boolean
+
+    let sceneList = [ Boxing, Disco ]
     let sceneName = ""
 
-    const sceneChangeHandler = (e:CustomEvent) => {
+    const sceneChangeHandler = (e:CustomEvent, func) => {
         sceneName = e.detail
+        menuOpen = false
+        func()
+        // console.log(LightDB.getInstance(1).color.level);
+
     }
 </script>
 
@@ -20,8 +27,8 @@
             title={scene.name}
             src={scene.src}
             active={sceneName === scene.name}
-            func={scene.func}
-            on:buttonChange={sceneChangeHandler}
+            func={() => {}}
+            on:buttonChange={(e) => {sceneChangeHandler(e, scene.func)}}
         />
     {/each}
 

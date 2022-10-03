@@ -12,7 +12,7 @@
         <Bar
             title={direction}
             bind:value={$store.scaling.ratio_control[i]}
-            range={[0, 5, 0.1]}
+            range={[0, 5, 0.5]}
             eventName="ScaleRatioReset"
             on:ScaleRatioReset={() => {$store.scaling.ratio_control[i] = 1}}
         />
@@ -21,7 +21,7 @@
     <Bar
         title="All"
         bind:value={$store.scaling.allRatio}
-        range={[0, 5, 0.1]}
+        range={[0, 5, 0.5]}
         eventName="ScaleAllReset"
         on:ScaleAllReset={() => {$store.scaling.ratio_control = [1,1,1]}}
         displayValue={false}

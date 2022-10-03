@@ -53,11 +53,11 @@ let scene = {
         const light1 = LightDB.getInstance(1)
         light1.reset()
         light1.color.level = [4, 2, 1]
-        light1.effect.flashing.turnOn()
+        // light1.effect.flashing.turnOn()
 
         const light2 = LightDB.getInstance(2)
         light2.reset()
-        light0.effect.dimming.turnOn()
+        light2.effect.dimming.turnOn()
 
 
         CanvasDB.setColor(0.2, 0, 0, 1)

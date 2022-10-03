@@ -1,5 +1,5 @@
 import LightColor from './LightColor'
-import LightEffect from './LightMotion'
+import LightEffect from './LightEffect'
 import LightLocation from './LightLocation'
 import { writable } from 'svelte/store'
 
@@ -12,7 +12,11 @@ class Light{
     constructor(index: number){
         this.color = new LightColor()
         this.location = new LightLocation(index)
-        this.effect = new LightEffect()
+        this.effect = new LightEffect(this)
+    }
+
+    applyEffect(){
+        return this.effect.apply()
     }
 
     reset(){

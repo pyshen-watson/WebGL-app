@@ -1,99 +1,56 @@
-import { webglStore } from 'src/lib/database/WebGLStore'
-import { ItemStoreList } from '$database/ItemDB'
-import { LightStoreList } from 'src/lib/database/LightStore'
-import { ModelName, ShaderName } from '$utils/Name'
-
-import Material from '$class/Material'
-import ItemMotionList from '$class/ItemMotionList'
+import CanvasDB from '$canvas/CanvasDB'
+import ItemDB from '$item/ItemDB'
+import LightDB from '$light/LightDB'
+import ModelName from '$model/ModelName'
+import ShaderName from '$shader/ShaderName'
 
 
 let scene = {
 
     name: "Disco" ,
-    src: "src/asset/image/disco.png",
+    src: "src/asset/image/scene/disco.png",
     func: () => {
 
-        ItemStoreList[0].update(($store) => {
+        const item0 = ItemDB.getInstance(0)
+        item0.reset()
+        item0.changeModel(ModelName.Moai)
+        item0.shaderName = ShaderName.Gouraud
+        item0.location.shift_control = [50, 0, 0]
+        item0.motion.vibing.turnOn()
 
-            $store.changeModel(ModelName.Moai)
-            $store.shaderName = ShaderName.Gouraud
-            $store.material = new Material()
-            $store.motion = new ItemMotionList()
+        const item1 = ItemDB.getInstance(1)
+        item1.reset()
+        item1.changeModel(ModelName.Teapot)
+        item1.shaderName = ShaderName.Flat
+        item1.location.shift_control = [0, 80, 0]
+        item1.rotation.auto = true
+        item1.rotation.speed = 450
+        item1.scaling.ratio_control = [3, 6, 3]
+        item1.shearing.degree = [0, 0, -5]
+        item1.material.Shininess = 0.1
 
-            $store.location.shift_control = [40, 0, 0]
-            $store.rotation.degree = [-90, 0, 50]
-            $store.rotation.auto = false
-            $store.scaling.ratio_control = [1, 1, 1]
-            $store.shearing.degree = [0, 0, 0]
+        const item2 = ItemDB.getInstance(2)
+        item2.reset()
+        item2.changeModel(ModelName.Kangaroo)
+        item2.shaderName = ShaderName.Gouraud
+        item2.location.shift_control = [-50, 0, 0]
+        item2.motion.jumping.turnOn()
 
-            $store.motion.vibing.on = true
+        const light0 = LightDB.getInstance(0)
+        light0.reset()
+        light0.effect.dimming.turnOn()
 
-            return $store
-        })
+        const light1 = LightDB.getInstance(1)
+        light1.reset()
+        light1.location.shift = [0, 0, -60]
+        light1.effect.flashing.turnOn()
+        // light1.effect.changing.turnOn()
 
-        ItemStoreList[1].update(($store) => {
+        const light2 = LightDB.getInstance(2)
+        light2.reset()
+        light2.effect.dimming.turnOn()
 
-            $store.changeModel(ModelName.Teapot)
-            $store.shaderName = ShaderName.Flat
-            $store.material = new Material()
-            $store.motion = new ItemMotionList()
-
-            $store.location.shift_control = [0, 50, 0]
-            $store.rotation.speed = 30
-            $store.scaling.ratio_control = [3, 3, 3]
-            $store.shearing.degree = [0, 0, 0]
-
-            $store.motion.reset()
-            $store.material.reset()
-            $store.material.Shininess = -0.5
-
-            return $store
-        })
-
-        ItemStoreList[2].update(($store) => {
-
-            $store.changeModel(ModelName.Kangaroo)
-            $store.shaderName = ShaderName.Gouraud
-            $store.material = new Material()
-            $store.motion = new ItemMotionList()
-
-            $store.location.shift_control = [-40, 20, 0]
-            $store.rotation.degree = [-90, 0, -45]
-            $store.rotation.auto = false
-            $store.scaling.ratio_control = [1, 1, 1]
-            $store.shearing.degree = [0, 0, 0]
-
-            $store.motion.jumping.on = true
-
-            return $store
-        })
-
-        LightStoreList[0].update(($store) => {
-
-            $store.reset()
-            $store.motion.flashing.on = true
-            return $store
-        })
-
-        LightStoreList[1].update(($store) => {
-
-            $store.reset()
-            $store.motion.changing.on = true
-            $store.motion.moving.on = true
-            return $store
-        })
-
-        LightStoreList[2].update(($store) => {
-
-            $store.reset()
-            $store.motion.flashing.on = true
-            return $store
-        })
-
-        webglStore.update(($store) => {
-            $store.setColor(0.2, 0.1, 0.2, 1)
-            return $store
-        })
+        CanvasDB.setColor(0.2, 0.1, 0.2, 1)
     }
 
 }

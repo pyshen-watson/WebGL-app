@@ -1,4 +1,4 @@
-import { mat4 } from 'gl-matrix'
+import { mat4, vec3 } from 'gl-matrix'
 
 import CanvasDB from '$canvas/CanvasDB'
 import ModelDB from '$model/ModelDB'
@@ -7,7 +7,6 @@ import LightDB from '$light/LightDB'
 import ItemDB from '$item/ItemDB'
 
 import applyTransfroms from '$utils/Transforms/ApplyTransforms'
-import applyLightEffects from '$utils/LightEffects/LightEffect'
 
 
 let mvMatrix = mat4.create() // perspective matrix
@@ -25,8 +24,15 @@ function drawScene(){
 
     // Apply light effects
     for( let id=0; id<3; id++){
+
         let store = LightDB.getStore(id)
-        applyLightEffects(store)
+        store.update(($store) => {
+
+            let out = $store.applyEffect()
+            $store.color.level = out.color
+            $store.location.shift = out.shift
+            return $store
+        })
     }
 
     for(let id=0; id<3; id++){
@@ -56,6 +62,7 @@ function drawScene(){
         gl.vertexAttribPointer(shader.vertexNormalAttribute, 3, gl.FLOAT, false, 0, 0)
 
         for(let lightID=0; lightID<3; lightID++){
+
             let light = LightDB.getInstance(lightID)
             gl.uniform3fv(shader.lightColor[lightID], light.color.level)
             gl.uniform4fv(shader.lightPosition[lightID], light.location.translate)

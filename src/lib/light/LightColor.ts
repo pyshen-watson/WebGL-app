@@ -13,10 +13,6 @@ class LightColor {
         return Color.Level2Code(this.level)
     }
 
-    set setByLevel(level: vec3){
-        this.level = level
-    }
-
     set setByCode(code: string){
         this.level = Color.Code2Level(code)
     }

@@ -5,8 +5,15 @@
     import type { LightStore } from "$utils/Type"
 
     export let store: LightStore
-
     let colorList = Color.createColorGrid(8)
+
+    let colorCode:string
+    $: colorCode = Color.Level2Code($store.color.level)
+
+    const paletteChange = (e) => {
+        $store.color.level = Color.Code2Level(e.target.value)
+    }
+
 </script>
 
 <div class="main">
@@ -21,7 +28,7 @@
         />
     {/each}
     <div class="selector">
-        <input type="color" bind:value={$store.color.setByCode}>
+        <input type="color" value={colorCode} on:change={paletteChange}>
         <div class="grid">
             {#each colorList as color}
                 <ColorSquare

@@ -14,7 +14,7 @@ class LightDB {
         }
     }
 
-    public static getStore(index: number){
+    static getStore(index: number){
         return this.db[index]
     }
 
