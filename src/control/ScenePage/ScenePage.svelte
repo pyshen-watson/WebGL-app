@@ -35,6 +35,10 @@
         display: grid;
         box-sizing: border-box;
         grid-template-columns: repeat(5, 1fr);
-        padding-top: 10%;
+
+        background-color: rgba(gray, 0.7);
+        margin: 3rem;
+        padding: 3rem 1.5rem;
+        border-radius: 20px;
     }
 </style>

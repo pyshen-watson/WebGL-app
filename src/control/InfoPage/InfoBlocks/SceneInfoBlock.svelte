@@ -74,10 +74,5 @@
                 font-size: 140%;
             }
         }
-        ul{
-            li{
-                margin-left: 2rem;
-            }
-        }
     }
 </style>

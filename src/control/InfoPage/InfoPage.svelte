@@ -55,10 +55,9 @@
         height: 100%;
 
         .infoblock{
-            margin: 3rem;
+            margin: 2rem;
             padding: 2rem;
-            min-height: 35%;
-            max-height: 35%;
+            height: 55vh;
             overflow-y: scroll;
             border-radius: 20px;
             background-color: rgba(gray, 0.7);
