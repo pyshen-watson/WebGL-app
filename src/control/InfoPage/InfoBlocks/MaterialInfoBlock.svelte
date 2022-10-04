@@ -43,7 +43,7 @@
         <li><Katex>n</Katex> is the shininess</li>
     </ul>
     <br>
-    
+
     So, we get:
     <div class="full"><Katex displayMode>{eq_full}</Katex></div>
 
@@ -56,16 +56,7 @@
         *{
             margin-bottom: 0.5rem;
         }
-        .gallery{
-            display: flex;
-            justify-content: space-around;
-
-            figure{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-        }
+      
         ul{
             li{
                 margin-left: 2rem;

@@ -12,7 +12,8 @@
 
 <div class="main">
     <h1>Transform</h1>
-    <p>We implement 4 kinds of transform in this project: translate, rotate, scale and shear</p>
+    <p>We implement 4 kinds of transform in this project: translate, rotate, scale and shear.</p>
+    <p>Instead of transforming the entire model, we doing changes on the <b>model-view matrix.</b></p>
     <br>
 
     <h2>Translation</h2>

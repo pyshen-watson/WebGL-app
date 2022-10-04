@@ -4,7 +4,11 @@
     import ModelInfoBlock from "./InfoBlocks/ModelInfoBlock.svelte"
     import ShaderInfoBlock from "./InfoBlocks/ShaderInfoBlock.svelte"
     import MaterialInfoBlock from "./InfoBlocks/MaterialInfoBlock.svelte"
-    import TransformInfoBlock from './InfoBlocks/TransformInfoBlock.svelte'
+    import TransformInfoBlock from "./InfoBlocks/TransformInfoBlock.svelte"
+    import MotionInfoBlock from "./InfoBlocks/MotionInfoBlock.svelte"
+    import LightInfoBlock from "./InfoBlocks/LightInfoBlock.svelte"
+    import EffectInfoBlock from "./InfoBlocks/EffectInfoBlock.svelte"
+    import SceneInfoBlock from "./InfoBlocks/SceneInfoBlock.svelte"
 
     let titleActive = InfoTabName.Model
 
@@ -27,6 +31,18 @@
 
         {:else if titleActive === InfoTabName.Transform}
             <TransformInfoBlock/>
+
+        {:else if titleActive === InfoTabName.Motion}
+            <MotionInfoBlock/>
+
+        {:else if titleActive === InfoTabName.Light}
+            <LightInfoBlock/>
+
+        {:else if titleActive === InfoTabName.Effect}
+            <EffectInfoBlock/>
+
+        {:else if titleActive === InfoTabName.Scene}
+            <SceneInfoBlock/>
 
         {/if}
     </div>
