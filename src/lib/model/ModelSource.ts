@@ -1,13 +1,11 @@
-import type { vec3 } from "gl-matrix"
-
 class ModelSource {
 
-    shift_base: vec3
-    shift_grow: vec3
-    degree_base: vec3
-    degree_grow: vec3
-    ratio: vec3
-    axis: vec3
+    shift_base: number[]
+    shift_grow: number[]
+    degree_base: number[]
+    degree_grow: number[]
+    ratio: number[]
+    axis: number[]
 
     vertexPositions: number[]
     vertexNormals: number[]

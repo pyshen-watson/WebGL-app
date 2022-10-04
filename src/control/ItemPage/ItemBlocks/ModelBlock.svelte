@@ -2,7 +2,7 @@
     import ImageButton from "$components/ImageButton.svelte"
     import Switch from "$components/Switch.svelte"
     import ModelName from "$model/ModelName"
-    import { ModelImages } from "$image/images"
+    import { ModelImages } from "$image/ImageExport"
     import type { ItemStore } from "$utils/Type"
 
     export let store: ItemStore

@@ -1,6 +1,6 @@
 <script lang="ts">
     import ImageButton from '$components/ImageButton.svelte'
-    import { SceneImages } from '$image/images'
+    import { SceneImages } from '$image/ImageExport'
     import Disco from '$scene/Disco'
     import Boxing from '$scene/Boxing'
     import Watering from '$scene/Watering'

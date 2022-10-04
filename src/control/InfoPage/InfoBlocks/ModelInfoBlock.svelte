@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { ModelImages } from "$image/ImageExport"
     import Katex from 'svelte-katex'
     const eq_shift = `(shift_{base}+shift_{grow} \\times index_{item})`
     const eq_degree = `(degree_{base}+degree_{grow} \\times index_{item})`
@@ -28,7 +29,7 @@
     <p>Besides these attribute, we also add something for better viewing experience.</p>
     <p>We will do these pre-transforms before we apply the parameters in control panel.</p>
     <br>
-    
+
     <h3>Transform Attribute:</h3>
     <ul>
         <li><b>shift_base:</b> A 3D vector be used with <b>shift_grow.</b></li>
@@ -39,7 +40,7 @@
         <li><b>axis:</b>A triple stands the order of axis because some models have different axis order. Ex. <Katex>{eq_axis0}</Katex> means its <Katex>{eq_axis1}</Katex></li>
     </ul>
     <figure>
-        <img src="src/asset/image/model/Teapot.png" alt="Teapot.png">
+        <img src={ModelImages.Teapot} alt="Teapot.png">
         <figcaption>The <a href="https://en.wikipedia.org/wiki/Utah_teapot">Utah Teapot</a>, the most iconic model in CG</figcaption>
     </figure>
 </div>

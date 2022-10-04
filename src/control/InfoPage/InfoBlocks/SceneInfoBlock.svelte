@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { InfoImages } from '$image/images'
+    import { InfoImages } from '$image/ImageExport'
 </script>
 
 <div class="main">

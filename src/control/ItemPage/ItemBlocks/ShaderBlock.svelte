@@ -1,7 +1,7 @@
 <script lang="ts">
     import ShaderName from "$shader/ShaderName"
     import ImageButton from "$components/ImageButton.svelte"
-    import { ShaderImages } from "$image/images"
+    import { ShaderImages } from "$image/ImageExport"
     import type { Writable } from "svelte/store"
     import type Item from "src/lib/item/Item"
 

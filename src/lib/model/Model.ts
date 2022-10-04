@@ -1,8 +1,8 @@
-import ModelSource from "./ModelSource"
 import { writable } from "svelte/store"
 import type { GL } from '$utils/Type'
+import ModelSource from "./ModelSource"
 
-class Model extends ModelSource {
+class Model extends ModelSource{
 
     gl: GL
     vertexPositionsBuffer?: WebGLBuffer
@@ -13,6 +13,7 @@ class Model extends ModelSource {
     constructor(gl: GL, src: Partial<Model>){
 
         super()
+
         Object.assign(this, src)
 
         this.gl = gl

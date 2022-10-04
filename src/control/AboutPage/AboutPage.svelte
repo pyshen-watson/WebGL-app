@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { LogoImage } from "$image/images"
+    import { LogoImage } from "$image/ImageExport"
 </script>
 
 <div class="main">

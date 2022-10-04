@@ -1,21 +1,25 @@
+<script lang="ts">
+    import { ShaderImages } from "$image/ImageExport"
+</script>
+
 <div class="main">
     <h1>Shader</h1>
     <p>We use shader to draw colors on models. We implement 4 kinds of shader in this project:</p>
     <div class="gallery">
         <figure>
-            <img src="src/asset/image/shader/Flat.png" alt="Flat.png">
+            <img src={ShaderImages.Flat} alt="Flat.png">
             <figcaption>Flat</figcaption>
         </figure>
         <figure>
-            <img src="src/asset/image/shader/Gouraud.png" alt="Gouraud.png">
+            <img src={ShaderImages.Gouraud} alt="Gouraud.png">
             <figcaption>Gouraud</figcaption>
         </figure>
         <figure>
-            <img src="src/asset/image/shader/Phong.png" alt="Phong.png">
+            <img src={ShaderImages.Phong} alt="Phong.png">
             <figcaption>Phong</figcaption>
         </figure>
         <figure>
-            <img src="src/asset/image/shader/Cel.png" alt="Cel.png">
+            <img src={ShaderImages.Cel} alt="Cel.png">
             <figcaption>Cel</figcaption>
         </figure>
     </div>
