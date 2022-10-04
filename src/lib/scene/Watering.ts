@@ -7,8 +7,7 @@ import ShaderName from '$shader/ShaderName'
 
 let scene = {
 
-    name: "Watering" ,
-    src: "src/asset/image/scene/watering.png",
+    name: "Watering",
     func: () => {
 
         const item0 = ItemDB.getInstance(0)
@@ -44,7 +43,7 @@ let scene = {
         item2.location.shift_control = [-75, -45, 0]
         item2.rotation.degree_control = [0, -30, 0]
         item2.scaling.ratio_control = [2, 2, 2]
-        
+
 
         const light0 = LightDB.getInstance(0)
         light0.reset()

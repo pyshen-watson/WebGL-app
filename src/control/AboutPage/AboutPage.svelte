@@ -1,12 +1,12 @@
 <script lang="ts">
-
+    import { LogoImage } from "$image/images"
 </script>
 
 <div class="main">
     <h1>Powered by Svelte x TypeScript x Vite</h1>
     <a  href="https://www.pyshen.net">
         <figure>
-            <img src="src/asset/image/about/logo.png" alt="https://www.pyshen.net">
+            <img src={LogoImage} alt="https://www.pyshen.net">
             <figcaption>Come to my website to see more works!</figcaption>
         </figure>
     </a>

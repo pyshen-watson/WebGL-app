@@ -2,6 +2,7 @@
     import ImageButton from "$components/ImageButton.svelte"
     import Switch from "$components/Switch.svelte"
     import ModelName from "$model/ModelName"
+    import { ModelImages } from "$image/images"
     import type { ItemStore } from "$utils/Type"
 
     export let store: ItemStore
@@ -13,6 +14,7 @@
             hidden = false
         }
     }
+
 </script>
 
 <div class="main">
@@ -22,7 +24,7 @@
         {#each Object.values(ModelName) as name}
             <ImageButton
                 title={name}
-                src={`src/asset/image/model/${name}.png`}
+                src={ModelImages[name]}
                 active={name == $store.modelName}
                 func={() => {$store.changeModel(name); $store=$store}}
                 caption={name}

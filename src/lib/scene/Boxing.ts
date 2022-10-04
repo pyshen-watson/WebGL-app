@@ -7,8 +7,7 @@ import ShaderName from '$shader/ShaderName'
 
 let scene = {
 
-    name: "Boxing" ,
-    src: "src/asset/image/scene/boxing.png",
+    name: "Boxing",
     func: () => {
 
         const item0 = ItemDB.getInstance(0)

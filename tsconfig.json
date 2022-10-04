@@ -21,8 +21,10 @@
       "$light/*": ["src/lib/light/*"],
       "$model/*": ["src/lib/model/*"],
       "$shader/*": ["src/lib/shader/*"],
+      "$scene/*": ["src/lib/scene/*"],
       "$utils/*": ["src/lib/utils/*"],
       "$asset/*": ["src/asset/*"],
+      "$image/*": ["src/asset/image/*"],
       "$components/*": ["src/asset/components/*"],
     }
   },

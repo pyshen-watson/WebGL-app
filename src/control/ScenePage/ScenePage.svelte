@@ -1,10 +1,11 @@
 <script lang="ts">
     import ImageButton from '$components/ImageButton.svelte'
-    import Disco from '$utils/Scenes/Disco'
-    import Boxing from '$utils/Scenes/Boxing'
-    import Watering from '$utils/Scenes/Watering'
-    import Driving from '$utils/Scenes/Driving'
-    import Wall from '$utils/Scenes/Wall'
+    import { SceneImages } from '$image/images'
+    import Disco from '$scene/Disco'
+    import Boxing from '$scene/Boxing'
+    import Watering from '$scene/Watering'
+    import Driving from '$scene/Driving'
+    import Wall from '$scene/Wall'
 
     export let menuOpen:Boolean
 
@@ -21,7 +22,7 @@
     {#each sceneList as scene}
         <ImageButton
             title={scene.name}
-            src={scene.src}
+            src={SceneImages[scene.name]}
             active={sceneName === scene.name}
             func={scene.func}
             on:buttonChange={sceneChangeHandler}

@@ -1,6 +1,7 @@
 <script lang="ts">
     import ShaderName from "$shader/ShaderName"
     import ImageButton from "$components/ImageButton.svelte"
+    import { ShaderImages } from "$image/images"
     import type { Writable } from "svelte/store"
     import type Item from "src/lib/item/Item"
 
@@ -12,7 +13,7 @@
     {#each Object.values(ShaderName) as name}
         <ImageButton
             title={name}
-            src={`src/asset/image/shader/${name}.png`}
+            src={ShaderImages[name]}
             active={name == $store.shaderName}
             func={() => {$store.shaderName = name}}
             caption={name}
